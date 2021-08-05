@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cdref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+  }
+  ngAfterContentChecked() {
+    this.cdref.detectChanges();
   }
 
 }

@@ -11,7 +11,8 @@ import {MatListModule} from '@angular/material/list';
 import { LibrariesRoutingModule } from './libraries-routing.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
-
+import {MatTabsModule} from '@angular/material/tabs'
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [],
   imports: [
@@ -26,8 +27,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     CommonModule,
     LibrariesRoutingModule,
     MatInputModule,
-    MatFormFieldModule
-    
+    MatFormFieldModule,
+    MatTabsModule,
+    MatMenuModule
   ],
   exports: [
     MatToolbarModule,
@@ -39,7 +41,9 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     FormsModule,
     MatListModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTabsModule,
+    MatMenuModule
   ]
 })
 export class LibrariesModule { }

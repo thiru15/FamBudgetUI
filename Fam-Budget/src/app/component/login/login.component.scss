@@ -4,7 +4,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
   }
 // .login-card{
     mat-card-title{
@@ -40,6 +39,7 @@
         border-radius: 4%;
         box-shadow: 1px 3px 2px lightslategray ;
         border: 1px;
+        min-width: 300px;
       }
 
       .mat-form-field{
@@ -52,3 +52,14 @@
           justify-content: center;
       }
 // }
+.mat-raised-button{
+  // background-color: #3c424e;
+  background-color:  rgba(128, 138, 157, 0.30);
+  // color: whitesmoke;
+  cursor: pointer;
+
+}
+.mat-raised-button:hover{
+  background-color: rgba(128, 138, 157, 1);;
+  color: whitesmoke;
+}

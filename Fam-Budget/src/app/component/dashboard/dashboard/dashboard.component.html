@@ -1,4 +1,4 @@
-<mat-tab-group color="primary" backgroundColor="primary" #tabGroup>
+<mat-tab-group color="primary" #tabGroup>
     <mat-tab label="Home">
         <app-home *ngIf="tabGroup.selectedIndex === 0"></app-home>
     </mat-tab>
@@ -14,11 +14,11 @@
 
 </mat-tab-group>
 
-<button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-menu">
+<!-- <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-menu">
     <mat-icon class="profile-icon" style="color: whitesmoke;">view_headline</mat-icon>
-</button>
+</button> -->
 
-<mat-menu #profileMenu="matMenu" yPosition="below" xPosition="before">
+<!-- <mat-menu #profileMenu="matMenu" yPosition="below" xPosition="before">
     <button mat-menu-item>
         <mat-icon>account_circle</mat-icon>
         <span>My Profile</span>
@@ -27,4 +27,4 @@
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
     </button>
-</mat-menu>
+</mat-menu> -->

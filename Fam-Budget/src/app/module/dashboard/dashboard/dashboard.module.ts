@@ -7,6 +7,7 @@ import { ReportsComponent } from 'src/app/component/reports/reports/reports.comp
 import { SecondaryUsersComponent } from 'src/app/component/secondary-users/secondary-users/secondary-users.component';
 import { TransactionsComponent } from 'src/app/component/transactions/transactions/transactions.component';
 import { DashboardComponent } from 'src/app/component/dashboard/dashboard/dashboard.component';
+import { FormModalComponent } from 'src/app/component/secondary-users/form-modal/form-modal.component';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { DashboardComponent } from 'src/app/component/dashboard/dashboard/dashbo
     HomeComponent,
     ReportsComponent,
     SecondaryUsersComponent,
-    TransactionsComponent],
+    TransactionsComponent,
+    FormModalComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,

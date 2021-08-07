@@ -9,6 +9,8 @@ import { TransactionsComponent } from 'src/app/component/transactions/transactio
 import { DashboardComponent } from 'src/app/component/dashboard/dashboard/dashboard.component';
 import { TransferMoneyComponent } from 'src/app/component/transfer-money/transfer-money/transfer-money.component';
 import { ActivityDashboardComponent } from 'src/app/component/activity-dashboard/activity-dashboard/activity-dashboard.component';
+import { FormModalComponent } from 'src/app/component/secondary-users/form-modal/form-modal.component';
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
   declarations: [    
@@ -18,12 +20,14 @@ import { ActivityDashboardComponent } from 'src/app/component/activity-dashboard
     SecondaryUsersComponent,
     TransactionsComponent,
     TransferMoneyComponent,
-    ActivityDashboardComponent
+    ActivityDashboardComponent,
+    FormModalComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     LibrariesModule,
+    FlexLayoutModule
   ]
 })
 export class DashboardModule { }

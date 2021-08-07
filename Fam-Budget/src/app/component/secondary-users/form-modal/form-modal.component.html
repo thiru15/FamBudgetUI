@@ -1,0 +1,61 @@
+<div class="add_user_form">
+    <form [formGroup]="myForm"  (ngSubmit)="submitForm()" novalidate>
+    <h3>CREATE NEW ACCOUNT</h3>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input formControlName="firstname" matInput placeholder="First Name">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input formControlName="lastname" matInput placeholder="Last Name">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Email">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Mobile</mat-label>
+            <input formControlName="mobile" matInput placeholder="Mobile">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option value="valid">Male</mat-option>
+                <mat-option value="valid">Female</mat-option>
+                <mat-option value="valid">Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Relationship</mat-label>
+            <input formControlName="relationship" matInput placeholder="Relationship">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Pan Number</mat-label>
+            <input formControlName="pannumber" matInput placeholder="Relationship">
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Age</mat-label>
+            <input formControlName="age" matInput placeholder="Relationship">
+        </mat-form-field>
+    </p>
+    <div class="formdiv">
+        <button mat-raised-button color="primary" [disabled]="myForm.invalid">Submit</button>
+    </div>
+</form>
+</div>

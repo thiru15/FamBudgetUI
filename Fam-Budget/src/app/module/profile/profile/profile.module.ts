@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FlexLayoutModule } from '@angular/flex-layout'
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from 'src/app/component/profile/profile/profile.component';
 import { MyProfileComponent } from 'src/app/component/my-profile/my-profile/my-profile.component';
@@ -18,7 +18,8 @@ import { LibrariesModule } from '../../libraries/libraries/libraries.module';
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    LibrariesModule
+    LibrariesModule,
+    FlexLayoutModule
   ]
 })
 export class ProfileModule { }

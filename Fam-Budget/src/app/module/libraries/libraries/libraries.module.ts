@@ -21,6 +21,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AvatarModule } from 'ngx-avatar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [],
   imports: [
@@ -46,7 +47,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatRadioModule,
     AvatarModule,
     FlexLayoutModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule,
   ],
   exports: [
     MatToolbarModule,
@@ -68,7 +70,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatNativeDateModule,
     MatRadioModule,
     AvatarModule,
-    MatGridListModule
+    MatGridListModule,
+    MatDialogModule,
   ]
 })
 export class LibrariesModule { }

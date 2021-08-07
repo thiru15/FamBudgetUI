@@ -1,1 +1,30 @@
-<p>secondary-users works!</p>
+<div class="add_user">
+    <button  mat-button (click)="openDialog()">
+        <mat-icon>add_circle</mat-icon>      Add Secondary User
+        
+    </button>
+    </div>
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid"       
+          class="flex-container"
+         >
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.xl="20%" *ngFor="let movie of movies">
+            <mat-card class="mat-elevation-z4 movie-card">
+                <!-- <mat-card-header> -->
+                  <mat-card-title>Shawshank Redemption</mat-card-title>
+                  <mat-card-title>{{ movie.title }}</mat-card-title>
+                  <mat-card-title>{{ movie.director }}</mat-card-title>
+                <!-- </mat-card-header> -->
+                <mat-card-content>
+                  <p>
+                      Tamil
+
+                      {{ movie.title }}
+                      {{ movie.director }}
+                      
+                  </p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+      </div>
+  </div>

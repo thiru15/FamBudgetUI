@@ -11,14 +11,21 @@
     <mat-tab label="Reports">
         <app-reports *ngIf="tabGroup.selectedIndex === 3"></app-reports>
     </mat-tab>
-
+    <mat-tab disabled class="profile-menu">
+        <ng-template mat-tab-label>
+            <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+                <ngx-avatar name="Ted Mosby" bgColor="#0F2027" size=40></ngx-avatar>
+                <!-- <mat-icon class="profile-icon" style="color: black;">view_headline</mat-icon> -->
+            </button>
+        </ng-template>
+    </mat-tab>
 </mat-tab-group>
 
 <!-- <button mat-icon-button [matMenuTriggerFor]="profileMenu" class="profile-menu">
     <mat-icon class="profile-icon" style="color: whitesmoke;">view_headline</mat-icon>
-</button> -->
+</button>  -->
 
-<!-- <mat-menu #profileMenu="matMenu" yPosition="below" xPosition="before">
+<mat-menu #profileMenu="matMenu" yPosition="below" xPosition="before">
     <button mat-menu-item>
         <mat-icon>account_circle</mat-icon>
         <span>My Profile</span>
@@ -27,4 +34,4 @@
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
     </button>
-</mat-menu> -->
+</mat-menu>

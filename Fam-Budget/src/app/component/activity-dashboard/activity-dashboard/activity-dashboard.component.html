@@ -1,0 +1,22 @@
+<mat-card class="card">
+    <mat-card-title>Grid & flex layout</mat-card-title>
+  
+    <mat-card-subtitle>
+      Angular component Grid & Flex  layout.<br>
+    </mat-card-subtitle>
+  
+    <mat-card-content>
+  
+  <div fxLayout="row wrap">
+    <div fxFlex="25" fxFlex.sm="33.3" fxFlex.xs="50" *ngFor="let tile of tiles">
+      <mat-grid-list cols="1" rowHeight="1:1">
+        <mat-grid-tile [style.background]="tile.color">
+          {{ tile.text }}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+  
+    </mat-card-content>
+  </mat-card>
+  

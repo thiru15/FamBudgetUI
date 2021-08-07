@@ -1,4 +1,3 @@
-<p>home works!</p>
 <!-- <mat-sidenav-container class="sidenav-container">
     <mat-sidenav
       fixedInViewport="true"
@@ -13,14 +12,33 @@
         <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true" >
           <mat-toolbar>Menu</mat-toolbar>
           <mat-nav-list>
-            <a mat-list-item [routerLink]="['/comp-a']"><i class="fas fa-credit-card"></i>  &nbsp; Cards</a>
-            <a mat-list-item [routerLink]="['/comp-b']"><i class="fas fa-bell"></i> &nbsp; Notifications</a>
-            <a mat-list-item [routerLink]="['/comp-b']"><i class="fas fa-balance-scale"></i> &nbsp; Balance</a>
-            <a mat-list-item [routerLink]="['/comp-b']"><i class="far fa-id-badge"></i> &nbsp; Policies</a>
+            <a mat-list-item (click)="navContentChange('activityDashboard')"><i class="fas fa-coffee"></i>&nbsp; Your Coffee House</a>
+            <a mat-list-item (click)="navContentChange('cards')"><i class="fas fa-credit-card" ></i>  &nbsp; Cards</a>
+            <a mat-list-item (click)="navContentChange('notifications')"><i class="fas fa-bell" ></i> &nbsp; Notifications</a>
+            <a mat-list-item (click)="navContentChange('balance')"><i class="fas fa-balance-scale" ></i> &nbsp; Balance</a>
+            <a mat-list-item (click)="navContentChange('policies')"><i class="far fa-id-badge" ></i> &nbsp; Policies</a>
+            <a mat-list-item (click)="navContentChange('transferMoney')"> <i class="fas fa-money-check"></i>&nbsp; Transfer Money</a>
           </mat-nav-list>
         </mat-sidenav>
-        <mat-sidenav-content class="content">
-          
+
+        <mat-sidenav-content class="content" *ngIf="loadComponent==='cards'">
+
+        </mat-sidenav-content>
+
+        <mat-sidenav-content class="content" *ngIf="loadComponent==='activityDashboard'">
+             <app-activity-dashboard></app-activity-dashboard>
+       </mat-sidenav-content>
+
+        <mat-sidenav-content class="content" *ngIf="loadComponent==='notifications'">
+
+        </mat-sidenav-content>
+
+        <mat-sidenav-content class="content" *ngIf="loadComponent==='transferMoney'">
+            <app-transfer-money></app-transfer-money>
+        </mat-sidenav-content>
+
+        <mat-sidenav-content class="content" *ngIf="loadComponent==='policies'">
+
         </mat-sidenav-content>
       </mat-sidenav-container>
     <!-- <mat-sidenav-content>

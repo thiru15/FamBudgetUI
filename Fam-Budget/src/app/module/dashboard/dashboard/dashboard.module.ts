@@ -7,7 +7,8 @@ import { ReportsComponent } from 'src/app/component/reports/reports/reports.comp
 import { SecondaryUsersComponent } from 'src/app/component/secondary-users/secondary-users/secondary-users.component';
 import { TransactionsComponent } from 'src/app/component/transactions/transactions/transactions.component';
 import { DashboardComponent } from 'src/app/component/dashboard/dashboard/dashboard.component';
-
+import { TransferMoneyComponent } from 'src/app/component/transfer-money/transfer-money/transfer-money.component';
+import { ActivityDashboardComponent } from 'src/app/component/activity-dashboard/activity-dashboard/activity-dashboard.component';
 
 @NgModule({
   declarations: [    
@@ -15,7 +16,10 @@ import { DashboardComponent } from 'src/app/component/dashboard/dashboard/dashbo
     HomeComponent,
     ReportsComponent,
     SecondaryUsersComponent,
-    TransactionsComponent],
+    TransactionsComponent,
+    TransferMoneyComponent,
+    ActivityDashboardComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,

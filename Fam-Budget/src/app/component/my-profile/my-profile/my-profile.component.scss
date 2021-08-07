@@ -1,0 +1,29 @@
+.profile-card{
+    margin-top: 5%;
+    margin-left: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 400px;
+}
+.mat-card-content{
+    margin-top: 30px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-items: center;
+    justify-self: center;
+}
+.profile-div{
+    display: flex;
+    align-items: center;
+    span{
+        font-size: medium;
+        padding-left: 20px;
+    }
+}
+.mat-card>.mat-card-actions:last-child{
+    display: flex;
+    justify-content: center;
+}

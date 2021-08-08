@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardComponent } from './component/card/card/card.component';
 //import { FormModalComponent } from './component/secondary-users/form-modal/form-modal.component';
 
 // import { FlexLayoutModule } from '@angular/flex-layout';
@@ -12,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    CardComponent,
     //FormModalComponent,
   ],
   imports: [

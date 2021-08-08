@@ -8,7 +8,7 @@
         <a mat-list-item [routerLink]="['/comp-b']">Routed Component B</a>
       </mat-nav-list>
     </mat-sidenav> -->
-<mat-sidenav-container class="container">
+<!-- <mat-sidenav-container class="container">
   <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
@@ -19,73 +19,9 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">
-    <div class="credit-card">
-      <div class="card-heading">
-        <div class="top">
-          <p>HDFC BANK</p>
-          <img src="https://expense.happay.in/assets/images/master_card_logo.svg" />
-        </div>
-        <div class="cardnum">
-          <h3>5261 &nbsp; 24xx &nbsp; xxxx &nbsp; 38xx</h3>
-        </div>
-        <div class="bottom">
-          CardHolder <br/>
-          <b>Thirumalai S</b>
-        </div>
-      </div>
-    </div>
-    <div class="credit-card">
-      <div class="card-heading">
-        <div class="top">
-          <p>HDFC BANK</p>
-          <img src="https://expense.happay.in/assets/images/master_card_logo.svg" />
-        </div>
-        <div class="cardnum">
-          <h3>5261 &nbsp; 24xx &nbsp; xxxx &nbsp; 38xx</h3>
-        </div>
-        <div class="bottom">
-          CardHolder <br/>
-          <b>Thirumalai S</b>
-        </div>
-      </div>
-    </div>
-    <div class="credit-card">
-      <div class="card-heading">
-        <div class="top">
-          <p>HDFC BANK</p>
-          <img src="https://expense.happay.in/assets/images/master_card_logo.svg" />
-        </div>
-        <div class="cardnum">
-          <h3>5261 &nbsp; 24xx &nbsp; xxxx &nbsp; 38xx</h3>
-        </div>
-        <div class="bottom">
-            CardHolder <br/>
-            <b>Thirumalai S</b>
-          </div>
-      </div>
-    </div>
-    <div class="credit-card">
-      <div class="card-heading">
-        <div class="top">
-          <p>HDFC BANK</p>
-          <img src="https://expense.happay.in/assets/images/master_card_logo.svg" />
-        </div>
-        <div class="cardnum">
-          <h3>5261 &nbsp; 24xx &nbsp; xxxx &nbsp; 38xx</h3>
-        </div>
-        <div class="bottom">
-          CardHolder <br/>
-          <b>Thirumalai S</b>
-        </div>
-      </div>
-      
-    </div>
-
-
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
 
-<!-- <mat-sidenav-content>
    <mat-sidenav-container class="container">
         <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true" >
           <mat-toolbar>Menu</mat-toolbar>
@@ -100,7 +36,7 @@
         </mat-sidenav>
 
         <mat-sidenav-content class="content" *ngIf="loadComponent==='cards'">
-
+          <app-card></app-card>
         </mat-sidenav-content>
 
         <mat-sidenav-content class="content" *ngIf="loadComponent==='activityDashboard'">
@@ -118,7 +54,7 @@
         <mat-sidenav-content class="content" *ngIf="loadComponent==='policies'">
 
         </mat-sidenav-content>
-      </mat-sidenav-container>
+      </mat-sidenav-container> 
     <!-- <mat-sidenav-content>
       <mat-toolbar color="primary">
         <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
@@ -129,8 +65,8 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content> -->
 
-
-<!-- <mat-sidenav #panel class="panel" position="end">
+<!-- 
+<mat-sidenav #panel class="panel" position="end">
       <ng-container #content></ng-container>
     </mat-sidenav>
   </mat-sidenav-container> -->

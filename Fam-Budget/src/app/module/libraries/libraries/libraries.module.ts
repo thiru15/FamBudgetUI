@@ -22,6 +22,7 @@ import { AvatarModule } from 'ngx-avatar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [],
   imports: [
@@ -49,6 +50,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     FlexLayoutModule,
     MatGridListModule,
     MatDialogModule,
+    ChartsModule
   ],
   exports: [
     MatToolbarModule,
@@ -72,6 +74,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AvatarModule,
     MatGridListModule,
     MatDialogModule,
+    ChartsModule
   ]
 })
 export class LibrariesModule { }

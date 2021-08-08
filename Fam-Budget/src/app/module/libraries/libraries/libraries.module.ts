@@ -13,11 +13,15 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {MatTabsModule} from '@angular/material/tabs'
 import {MatMenuModule} from '@angular/material/menu';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
+import { AvatarModule } from 'ngx-avatar';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -35,11 +39,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatTabsModule,
     MatMenuModule,
-    MatSidenavModule,
-    MatGridListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    AvatarModule,
     FlexLayoutModule,
+    MatGridListModule,
     MatDialogModule,
-    ReactiveFormsModule
   ],
   exports: [
     MatToolbarModule,
@@ -54,11 +63,15 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatFormFieldModule,
     MatTabsModule,
     MatMenuModule,
-    MatSidenavModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    AvatarModule,
     MatGridListModule,
-    FlexLayoutModule,
     MatDialogModule,
-    ReactiveFormsModule
   ]
 })
 export class LibrariesModule { }

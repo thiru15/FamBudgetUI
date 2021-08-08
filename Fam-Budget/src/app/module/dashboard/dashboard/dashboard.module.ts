@@ -7,8 +7,10 @@ import { ReportsComponent } from 'src/app/component/reports/reports/reports.comp
 import { SecondaryUsersComponent } from 'src/app/component/secondary-users/secondary-users/secondary-users.component';
 import { TransactionsComponent } from 'src/app/component/transactions/transactions/transactions.component';
 import { DashboardComponent } from 'src/app/component/dashboard/dashboard/dashboard.component';
+import { TransferMoneyComponent } from 'src/app/component/transfer-money/transfer-money/transfer-money.component';
+import { ActivityDashboardComponent } from 'src/app/component/activity-dashboard/activity-dashboard/activity-dashboard.component';
 import { FormModalComponent } from 'src/app/component/secondary-users/form-modal/form-modal.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 @NgModule({
   declarations: [    
@@ -17,12 +19,15 @@ import { FormModalComponent } from 'src/app/component/secondary-users/form-modal
     ReportsComponent,
     SecondaryUsersComponent,
     TransactionsComponent,
+    TransferMoneyComponent,
+    ActivityDashboardComponent,
     FormModalComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     LibrariesModule,
+    FlexLayoutModule
   ]
 })
 export class DashboardModule { }

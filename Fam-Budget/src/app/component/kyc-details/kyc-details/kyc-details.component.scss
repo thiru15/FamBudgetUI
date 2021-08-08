@@ -1,0 +1,45 @@
+.content {
+    padding: 16px;
+}
+.kyc-details{
+    margin-left: 18%;
+}
+.content > mat-card {
+    margin-bottom: 16px;
+}
+.doc-card{
+  margin-bottom: 16px;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.01);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+    }
+    height: 100%;
+    width: fit-content;
+    box-sizing: border-box;
+}
+.mat-card-header{
+  height: 30px;
+}
+.mat-card-title{
+  font-size: 0.8em;
+  font-weight: 800;
+}
+
+
+
+// .img {
+//   width: 100%;
+//   margin-bottom: 18%;
+// }
+// .card-picture {
+//   width: 23%;
+//   margin-bottom: 2%;
+// }
+// .container {
+//   min-height: 100%;
+//   width: 100%;
+// }
+// .search-form {
+//   width: 90%;
+// }

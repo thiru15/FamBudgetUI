@@ -31,7 +31,21 @@
     </div>
   </div>
 
-  <div style="background-color: #f5f5f5">Two</div>
+  <div style="background-color: #f5f5f5">
+    Two
+    <div style="display: block;">
+      <canvas baseChart 
+        [data]="pieChartData" 
+        [labels]="pieChartLabels" 
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [plugins]="pieChartPlugins"
+        [colors] = "pieChartColor"
+        [legend]="pieChartLegend">
+      </canvas>
+    </div>
+    
+  </div>
   <div style="background-color: #f5f5f5;">Three</div>
   <div style="background-color: rgb(167, 199, 231);">Four</div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartColor, ChartOptions, ChartType } from 'chart.js';
-import { Color, Label, SingleDataSet } from 'ng2-charts';
+import { Color, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataSet } from 'ng2-charts';
 
 @Component({
   selector: 'app-activity-dashboard',
@@ -9,10 +9,16 @@ import { Color, Label, SingleDataSet } from 'ng2-charts';
 })
 export class ActivityDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    monkeyPatchChartJsTooltip();
+    monkeyPatchChartJsLegend();
+}
 
   ngOnInit(): void {
+    this.addColor();
+    
   }
+  colors = [ '#367588','#002244', '#132257' ,'#0C2340','#00CCFF']
   public usersChartLabels: Label[] = [ ['Funds Allocated'], ['Money Spent']];
   public usersChartData: SingleDataSet = [500, 200];
   public usersChartType: ChartType = 'doughnut';
@@ -23,6 +29,28 @@ export class ActivityDashboardComponent implements OnInit {
          fontSize: 8 },
     },
   }
+  public pieChartOptions: ChartOptions = {
+    responsive: true,
+  };
+  res :any=[]
+   public addColor :any  = (() =>{
+    console.log("add color ");
+    const colorsLength :any = this.colors.length;
+    for(let index=0;index<this.pieChartData.length;index++){
+      this.res.push( this.colors[index % colorsLength]);
+
+    }
+    console.log("Result ",this.res);
+  })
+  
+  public pieChartLabels: Label[] = ['Sangeetha PL', 'Thirumalai S', 'Arun'];
+  public pieChartData: SingleDataSet = [300, 500, 100,200,89,97,76];
+  public pieChartType: ChartType = 'pie';
+  public pieChartColor: Color[] = [{backgroundColor: this.res}]
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
+
+  
 //   data: {
 //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
 //     datasets: [{

@@ -8,7 +8,6 @@ import {ChangeDetectorRef } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   constructor(private cdref: ChangeDetectorRef) { }
-
   ngOnInit(): void {
   }
   ngAfterContentChecked() {

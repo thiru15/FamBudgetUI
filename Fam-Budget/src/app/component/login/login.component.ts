@@ -10,10 +10,15 @@ export class LoginComponent implements OnInit {
       username: new FormControl(''),
       password: new FormControl('')
     })
+  loadComponent = 'cards'
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+  navContentChange(content: string){
+    console.log(content)
+    this.loadComponent = content
   }
   submit(){
     console.log(this.form.value)

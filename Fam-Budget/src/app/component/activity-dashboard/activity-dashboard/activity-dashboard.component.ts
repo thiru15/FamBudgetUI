@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartColor, ChartOptions, ChartType } from 'chart.js';
+import { ChartColor, ChartOptions, ChartType ,ChartDataSets} from 'chart.js';
 import { Color, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataSet } from 'ng2-charts';
 
 @Component({
@@ -22,14 +22,18 @@ export class ActivityDashboardComponent implements OnInit {
   public usersChartLabels: Label[] = [ ['Funds Allocated'], ['Money Spent']];
   public usersChartData: SingleDataSet = [500, 200];
   public usersChartType: ChartType = 'doughnut';
-  public userChartColor: Color[] = [{backgroundColor:['#0047AB','#40B5AD']}]
+  public userChartColor: Color[] = [{ backgroundColor: ['#0047AB', '#40B5AD'] }]
   public userChartOptions: ChartOptions = {
     legend: {
-      labels: { 
-         fontSize: 8 },
+      labels: {
+        fontSize: 8
+      },
     },
+    maintainAspectRatio: true,
+    responsive: true
   }
   public pieChartOptions: ChartOptions = {
+    maintainAspectRatio: true,
     responsive: true,
   };
   res :any=[]
@@ -49,6 +53,35 @@ export class ActivityDashboardComponent implements OnInit {
   public pieChartColor: Color[] = [{backgroundColor: this.res}]
   public pieChartLegend = true;
   public pieChartPlugins = [];
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+    legend: {
+      labels: {
+        fontSize: 8
+      }
+    },
+    scales: {
+      xAxes: [{
+        gridLines: {
+          color: "rgba(0, 0, 0, 0)",
+        }
+      }],
+      yAxes: [{
+        gridLines: {
+          color: "rgba(0, 0, 0, 0)",
+        }
+      }]
+    }
+  };
+  public barChartLabels: Label[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', "dec"];
+  public barChartType: ChartType = 'bar';
+  public barChartLegend = true;
+  public barChartPlugins = []
+  public barChartColor: Color[] = [{ backgroundColor: '#3063A5' }]
+  public barChartData: ChartDataSets[] = [
+    { data: [165, 549, 1680, 81, 5776, 565, 470, 81, 5776, 565, 470], label: 'expense' },
+  ];
 
   
 //   data: {

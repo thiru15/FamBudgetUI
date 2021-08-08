@@ -1,1 +1,118 @@
-<p>signup works!</p>
+<div class="add_user_form">
+    <form [formGroup]="myForm"  (ngSubmit)="submitForm()" novalidate>
+    <h3>CREATE NEW ACCOUNT</h3>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input formControlName="firstname" matInput placeholder="First Name">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input formControlName="lastname" matInput placeholder="Last Name">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Email">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Mobile</mat-label>
+            <input formControlName="mobile" matInput placeholder="Mobile">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option value="valid">Male</mat-option>
+                <mat-option value="valid">Female</mat-option>
+                <mat-option value="valid">Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Relationship</mat-label>
+            <input formControlName="relationship" matInput placeholder="Relationship">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Pan Number</mat-label>
+            <input formControlName="pannumber" matInput placeholder="Relationship">
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="fill">
+            <mat-label>Age</mat-label>
+            <input formControlName="age" matInput placeholder="Relationship">
+        </mat-form-field>
+    </p>
+    <p>
+        <input class="ng-hide" id="input-file-id" multiple type="file" />
+<label for="input-file-id" class="md-button md-raised md-primary">Upload your Passport size photo , ID Proof</label>
+    </p>
+    <div class="formdiv">
+        <button mat-raised-button color="primary" [disabled]="myForm.invalid">Submit</button>
+    </div>
+</form>
+</div>
+<!-- <mat-card class="login-card"> 
+    <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+  
+    <mat-form-field>
+      <input type="text" matInput placeholder="Username" formControlName="username">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput placeholder="Password" formControlName="password">
+    </mat-form-field> 
+  
+    <mat-form-field appearance="fill">
+      <mat-label>First Name</mat-label>
+      <input matInput>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Mobile</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Gender</mat-label>
+        <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Male</mat-radio-button>
+            <mat-radio-button value="2">Female</mat-radio-button>
+            <mat-radio-button value="3">Other</mat-radio-button>
+          </mat-radio-group>
+    </mat-form-field>    
+    <mat-form-field appearance="fill">
+        <mat-label>Pan Number</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput>
+    </mat-form-field>    
+  
+  <div class="button">
+    <button type="submit" mat-raised-button>login</button>
+  </div>
+  
+  </form>
+  </mat-card-content>
+  </mat-card> -->

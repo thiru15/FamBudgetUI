@@ -43,14 +43,14 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   constructor(private DashboardService: DashboardService) {
 
     this.getAllTransactions()
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
     // Assign the data to the data source for the table to render
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {
@@ -64,9 +64,12 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
 
    getAllTransactions() {
 
+
     return this.DashboardService.getTransactions(111, 1).pipe(first()).subscribe( (data) => {
       this.data = data
       this.dataSource = new MatTableDataSource(this.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
   }
 }

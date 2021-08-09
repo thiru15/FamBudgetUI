@@ -12,6 +12,7 @@ import { ActivityDashboardComponent } from 'src/app/component/activity-dashboard
 import { FormModalComponent } from 'src/app/component/secondary-users/form-modal/form-modal.component';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { CardComponent } from 'src/app/component/card/card/card.component';
+import { SignupComponent } from 'src/app/component/signup/signup/signup.component';
 @NgModule({
   declarations: [    
     DashboardComponent,
@@ -21,8 +22,9 @@ import { CardComponent } from 'src/app/component/card/card/card.component';
     TransactionsComponent,
     TransferMoneyComponent,
     ActivityDashboardComponent,
+    CardComponent,
     FormModalComponent,
-    CardComponent
+    //CardComponent
   ],
   imports: [
     CommonModule,

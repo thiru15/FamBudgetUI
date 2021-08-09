@@ -1,7 +1,6 @@
 // .card-div{
 //         // margin-left: 8%;
 // }
-
 .content{
   margin-top: 16px;
   // margin-right: 2%;
@@ -13,6 +12,10 @@
 }
 .flex-item{
   margin: 0% !important;
+}
+.flex-container{
+  max-height: 47vh;
+  overflow-y: scroll;
 }
 .prof-card{
     margin-bottom: 16px;

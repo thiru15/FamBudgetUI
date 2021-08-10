@@ -55,7 +55,7 @@
         </mat-form-field>
     </p>
     <p>
-        <input class="ng-hide" id="input-file-id" multiple type="file" />
+        <input class="ng-hide" id="input-file-id" multiple type="file" (change)="onFileSelect($event)" accept="image/*,.pdf,.doc,.docx"/>
 <label for="input-file-id" class="md-button md-raised md-primary">Upload your Passport size photo , ID Proof</label>
     </p>
     <div class="formdiv">

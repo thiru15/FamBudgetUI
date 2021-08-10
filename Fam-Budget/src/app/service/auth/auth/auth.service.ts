@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  headerOptions: any;
+  headerOptions: HttpHeaders;
   constructor(private http: HttpClient) {
     this.headerOptions = new HttpHeaders({
       'content-type': 'application/json',
@@ -33,9 +33,9 @@ export class AuthService {
     );
   }
 
-  signup(userDetails: any): Observable<any> {
-    return this.http.post(API_URL.BASE_URL + API_URL.SIGNUP,
-      {userDetails},
+  signup(formDetails: any): Observable<any> {
+    return this.http.post('http://localhost:3000/dev/auth/signup',
+      {files: formDetails.value.file},
       {headers: this.headerOptions}
     );
   }

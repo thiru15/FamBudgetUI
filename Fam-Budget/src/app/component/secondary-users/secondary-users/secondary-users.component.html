@@ -8,21 +8,21 @@
     <div fxLayout="row wrap" fxLayoutGap="16px grid"       
           class="flex-container"
          >
-        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.xl="20%" *ngFor="let movie of movies">
+         <!--  [{"secondaryId":234,"accountNumber":111,"firstName":"ram","lastName":"kumar","email":"t@gmail.com","mobile":"99458923","gender":"Male","relationship":"frand","isKycVerified":true,"bcity":"Chennai","panNumber":"gh12","isActive":true,"createdAt":"2021-08-09T19:43:45.000Z","updatedAt":"2021-08-09T19:43:45.000Z","isMinor":false,"fundsAllocated":1000,"fundsSpent":0}]-->
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.xl="20%" *ngFor="let user of secondaryUsers">
             <mat-card class="mat-elevation-z4 movie-card">
-                <!-- <mat-card-header> -->
-                  <mat-card-title>Shawshank Redemption</mat-card-title>
-                  <mat-card-title>{{ movie.title }}</mat-card-title>
-                  <mat-card-title>{{ movie.director }}</mat-card-title>
-                <!-- </mat-card-header> -->
+                <mat-card-header>
+                    <ngx-avatar mat-card-avatar name="{{user.firstName}} {{user.lastName}}" bgColor="#0F2027" size=30 class="example-header-image"></ngx-avatar>
+                  <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+                  <mat-card-subtitle>{{ user.relationship}}</mat-card-subtitle>
+
+
+                </mat-card-header>
                 <mat-card-content>
                   <p>
-                      Tamil
-
-                      {{ movie.title }}
-                      {{ movie.director }}
                       
                   </p>
+
                 </mat-card-content>
             </mat-card>
         </div>

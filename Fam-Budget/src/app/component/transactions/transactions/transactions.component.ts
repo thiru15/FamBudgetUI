@@ -1,11 +1,10 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { first } from 'rxjs/internal/operators/first';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
-
 
 export interface TransactionData {
   transactionID: string;
@@ -23,13 +22,19 @@ export interface TransactionData {
 })
 export class TransactionsComponent implements OnInit,AfterViewInit {
 
+  myForm! : FormGroup;
   // constructor() { }
-  startDate = new FormControl(new Date());
-  endDate = new FormControl(new Date());
-  transactionId = new FormControl('');
-  merchant = new FormControl('');
-  accountType = 'primary'
-  transactionType = 'both'
+  reactiveForm() {
+    this.myForm = this.fb.group({
+  startDate :new FormControl(new Date(2000, 4, 15)),
+  endDate : new FormControl(new Date()),
+  transactionID : new FormControl(''),
+  merchant : new FormControl(''),
+  accountType:  new FormControl('primary'),
+  transactionType : new FormControl('both')
+    }
+  )
+  }
 
   ngOnInit(): void {
   }
@@ -40,11 +45,9 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private DashboardService: DashboardService) {
-
+  constructor(private DashboardService: DashboardService, public fb: FormBuilder) {
+    this.reactiveForm()
     this.getAllTransactions()
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     // Assign the data to the data source for the table to render
   }
 
@@ -63,11 +66,16 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   }
 
    getAllTransactions() {
-
-    return this.DashboardService.getTransactions(111, 1).pipe(first()).subscribe( (data) => {
+    return this.DashboardService.getTransactions(111, 1, this.myForm).pipe(first()).subscribe( (data) => {
       this.data = data
       this.dataSource = new MatTableDataSource(this.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
+  }
+  onSearch(){
+    console.log(this.myForm.value)
+    this.getAllTransactions()
   }
 }
 

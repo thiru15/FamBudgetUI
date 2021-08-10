@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 import { FormModalComponent } from '../form-modal/form-modal.component';
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -11,8 +12,12 @@ export interface DialogData {
   styleUrls: ['./secondary-users.component.scss']
 })
 export class SecondaryUsersComponent implements OnInit {
+  secondaryUsers: any;
+  accountNumber : any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private dashboardService: DashboardService) {
+    this.getSecondarUsers()
+  }
 
   ngOnInit(): void {
   }
@@ -26,7 +31,11 @@ openDialog() {
   this.dialog.open(FormModalComponent);
 }
   
-
+getSecondarUsers(){
+  this.dashboardService.getSecondaryUsers(111).subscribe( (data) => {
+    this.secondaryUsers = data
+  })
+}
 
 }
 class Movie {  

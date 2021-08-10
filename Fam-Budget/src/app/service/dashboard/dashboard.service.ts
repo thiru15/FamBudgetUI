@@ -43,6 +43,15 @@ export class DashboardService {
      );
  }
 
+ getCards(accountNumber: any, customerId: any, secondaryId: any, senderSecondary: any): Observable<any> {
+   const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId).set('secondaryId', secondaryId).set('senderSecondary', senderSecondary)
+
+   const url = API_URL.BASE_URL + API_URL.GET_CARDS
+   return this.http.get(url,
+     {headers: this.headerOptions, params: parameters}
+     );
+ }
+
 
 
 }

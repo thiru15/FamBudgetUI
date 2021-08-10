@@ -31,6 +31,8 @@
 
   <div style="background-color: #f5f5f5">
     <div style="display: block;">
+      <div class="balance">
+        <h3>Balance Rs:12000</h3></div>
       <canvas baseChart 
         [data]="pieChartData" 
         [labels]="pieChartLabels" 
@@ -57,5 +59,38 @@
       </canvas>
     </div>
   </div>
-  <div style="background-color: rgb(167, 199, 231);">Four</div>
+  <div>
+    <div class="container">
+      <h3>Transactions</h3>
+      <div class="transaction">
+        <h4>Meena M</h4>
+        <div>
+          <b>Water Bill</b>
+          <br/>
+          <small>Successfully</small>
+        </div>
+        <b style="color: darkseagreen;">+$120</b>
+      </div>
+      <div class="transaction">
+        <h4>Madhumitha</h4>
+        <div>
+          <b>Water Bill</b>
+          <br/>
+          <small>Successfully</small>
+        </div>
+        <b style="color: #EA0085;">~$220</b>
+      </div>
+      <div class="transaction">
+        <h4>Sahana</h4>
+        <div>
+          <b>Water Bill</b>
+          <br/>
+          <small>Successfully</small>
+        </div>
+        <b style="color: darkseagreen;">+$60</b>
+      </div>
+    </div>
+    
+  
+  </div>
 </div>

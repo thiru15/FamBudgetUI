@@ -1,14 +1,15 @@
+<div class="main-secondary">
 <div class="add_user">
     <button  mat-button (click)="openDialog()">
         <mat-icon>add_circle</mat-icon>      Add Secondary User
         
     </button>
     </div>
-<div class="content">
+<!-- <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid"       
           class="flex-container"
          >
-         <!--  [{"secondaryId":234,"accountNumber":111,"firstName":"ram","lastName":"kumar","email":"t@gmail.com","mobile":"99458923","gender":"Male","relationship":"frand","isKycVerified":true,"bcity":"Chennai","panNumber":"gh12","isActive":true,"createdAt":"2021-08-09T19:43:45.000Z","updatedAt":"2021-08-09T19:43:45.000Z","isMinor":false,"fundsAllocated":1000,"fundsSpent":0}]-->
+         [{"secondaryId":234,"accountNumber":111,"firstName":"ram","lastName":"kumar","email":"t@gmail.com","mobile":"99458923","gender":"Male","relationship":"frand","isKycVerified":true,"bcity":"Chennai","panNumber":"gh12","isActive":true,"createdAt":"2021-08-09T19:43:45.000Z","updatedAt":"2021-08-09T19:43:45.000Z","isMinor":false,"fundsAllocated":1000,"fundsSpent":0}]
         <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.xl="20%" *ngFor="let user of secondaryUsers">
             <mat-card class="mat-elevation-z4 movie-card">
                 <mat-card-header>
@@ -27,4 +28,52 @@
             </mat-card>
         </div>
       </div>
-  </div>
+  </div> -->
+  <div class="secondary">
+  <mat-card class="profile-card" *ngFor="let user of secondaryUsers">
+  
+      <mat-card-header>
+        <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{user.relationship}}</mat-card-subtitle>
+         <ngx-avatar [name]="user.firstName+' '+user.lastName" [bgColor]="user.avatarColor" size=45></ngx-avatar>
+      </mat-card-header>
+  
+      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+  <!-- 
+      <button mat-icon-button mat-card-image> -->
+        <!-- <ngx-avatar name="Ted Mosby" bgColor="#0F2027" size=60></ngx-avatar> -->
+        <!-- <mat-icon class="profile-icon" style="color: black;">view_headline</mat-icon> -->
+      <!-- </button> -->
+  
+      <mat-card-content>
+          <div class="balance">
+              <h3> &#x20B9; {{user.fundsAllocated-user.fundsSpent}}</h3>
+          </div>
+        <div class="profile-div">
+          <mat-icon class="profile-icon" style="color: black;">phone</mat-icon> 
+          <span>{{user.mobile}}</span>
+        </div>
+        <div class="profile-div">
+          <mat-icon class="profile-icon" style="color: black;">email</mat-icon> 
+        <span>{{user.email}}</span>
+        </div>
+        <div class="profile-div">
+          <mat-icon class="profile-icon" style="color: black;">perm_identity</mat-icon> 
+          <span>{{user.gender}}</span>
+        </div>
+        <div class="profile-div">
+          <mat-icon class="profile-icon" style="color: black;">location_on</mat-icon> 
+          <span>{{user.bcity}}</span>
+        </div>
+
+      </mat-card-content>
+       <mat-card-actions >
+        <button mat-button *ngIf="active" class="bg-active" (click)="activate()">Active</button>
+        <button mat-button *ngIf="!active" class="bg-disable" (click)="activate()" >Disabled</button>
+      </mat-card-actions>
+      
+
+      
+    </mat-card>
+</div>
+</div>

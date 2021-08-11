@@ -1,9 +1,9 @@
-<app-profile></app-profile> 
+<!-- <app-profile></app-profile>  -->
 <div class="kyc-details">
     <h4>Kyc Verified Documemts</h4>
     <div class="content">
         <div fxLayout="row wrap" fxLayoutGap="16px grid" class="flex-container">
-            <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.xl="20%"
+            <div fxFlex="33%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.xl="20%"
                 *ngFor="let movie of ['doc', 'doc', 'doc']">
                 <mat-card class="mat-elevation-z4 doc-card">
                     <iframe src="https://fambudget-bucket.s3.amazonaws.com/primary-users/1234/sample.pdf?AWSAccessKeyId=AKIATN7JVL7QWCS6V7UP&Expires=1628532670&Signature=IdRt5ewqMEBkTYEIOrjc5ZpXzgk%3D" height="300"
@@ -18,8 +18,9 @@
     </div>
 </div>
 
-<!-- 
-<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" fxFlex="10%%">
+
+
+<!-- <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" fxFlex="10%%">
     <mat-card class="card-picture" *ngFor="let picture of ['doc', 'doc', 'doc']">
       <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
         <span fxFlex="80%">picture.title</span>

@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class HomeComponent implements OnInit {
   
   
-  loadComponent = 'cards'
+  loadComponent = 'activityDashboard'
   constructor(private cdref: ChangeDetectorRef) { }
 
   ngOnInit(): void {

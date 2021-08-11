@@ -9,24 +9,26 @@ import { TransactionsComponent } from 'src/app/component/transactions/transactio
 const routes: Routes = [
   {
     path: '',
-    component: DashboardComponent
-  },
-  // {
-  //   path: 'transactions',
-  //   component: TransactionsComponent
-  // },
-  // // {
-  // //   path: 'expenses',
-  // //   component:
-  // // }
-  // {
-  //   path: 'secondary_users',
-  //   component: SecondaryUsersComponent
-  // },
-  // {
-  //   path: 'reports',
-  //   component: ReportsComponent
-  // }
+    component: DashboardComponent,
+    // children: [
+    //   {
+    //     path: '',
+    //     component: HomeComponent
+    //   },
+    //   {
+    //     path: 'transactions',
+    //     component: TransactionsComponent
+    //   },
+    //   {
+    //     path: 'secondary_users',
+    //     component: SecondaryUsersComponent
+    //   },
+    //   {
+    //     path: 'reports',
+    //     component: ReportsComponent
+    //   }
+    // ],
+  }
 ];
 
 @NgModule({

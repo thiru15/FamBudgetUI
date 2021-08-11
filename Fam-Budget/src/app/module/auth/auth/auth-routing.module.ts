@@ -13,7 +13,6 @@ const routes: Routes = [
     path: 'signup',
     component: SignupComponent
   },
-
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent

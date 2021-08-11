@@ -19,36 +19,36 @@
     margin-left: 20vw;
     flex-direction: row;
     //width: fit-content;
-    padding-left: 5%;
+    // padding-left: 5%;
     gap:5%;
-    .credit-card{
-        background-image: url("https://expense.happay.in/assets/images/physical_card.svg");
-        width: 345px;
-        height: 210px;
-        //padding: 3vw 10vw 2vw 10vw;
-        color: white;
-        background-repeat: no-repeat;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        .card-heading{
-            width: inherit;
-            .top{
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-            }
-            .cardnum{
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .bottom{
-                padding-left: 5%;
-                font-size: 12px;
-            }
-        }
-    }
+    // .credit-card{
+    //     background-image: url("https://expense.happay.in/assets/images/physical_card.svg");
+    //     width: 345px;
+    //     height: 210px;
+    //     //padding: 3vw 10vw 2vw 10vw;
+    //     color: white;
+    //     background-repeat: no-repeat;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     justify-content: center;
+    //     .card-heading{
+    //         width: inherit;
+    //         .top{
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: space-around;
+    //         }
+    //         .cardnum{
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: center;
+    //         }
+    //         .bottom{
+    //             padding-left: 5%;
+    //             font-size: 12px;
+    //         }
+    //     }
+    // }
 
 }

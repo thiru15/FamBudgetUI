@@ -12,6 +12,7 @@ import { ActivityDashboardComponent } from 'src/app/component/activity-dashboard
 import { FormModalComponent } from 'src/app/component/secondary-users/form-modal/form-modal.component';
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { CardComponent } from 'src/app/component/card/card/card.component';
+import { RouterModule } from '@angular/router';
 import { SignupComponent } from 'src/app/component/signup/signup/signup.component';
 @NgModule({
   declarations: [    
@@ -30,7 +31,11 @@ import { SignupComponent } from 'src/app/component/signup/signup/signup.componen
     CommonModule,
     DashboardRoutingModule,
     LibrariesModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule
+  ],
+  exports: [
+    RouterModule
   ]
 })
 export class DashboardModule { }

@@ -10,6 +10,7 @@ export class DashboardComponent implements OnInit {
   constructor(private cdref: ChangeDetectorRef) { }
   ngOnInit(): void {
   }
+  activeLink: string = 'home';
   ngAfterContentChecked() {
     this.cdref.detectChanges();
   }

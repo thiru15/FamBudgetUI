@@ -14,11 +14,13 @@ export class ActivityDashboardComponent implements OnInit {
   allocatedAndSpend: any;
   secondaryUsers: any[] = [];
   balance: any;
+  yearlyTransactions: any[] = [];
   constructor(private dashboardService: DashboardService) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
     this.getAllUserBalance()
     this.getRecentTransactions()
+    this.getYearlyTransactions()
  
 }
 
@@ -80,13 +82,13 @@ export class ActivityDashboardComponent implements OnInit {
       }]
     }
   };
-  public barChartLabels: Label[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', "dec"];
+  public barChartLabels: Label[] = ['Jan', 'Feb', 'March', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sept', 'Oct', 'Nov', "Dec"];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = []
   public barChartColor: Color[] = [{ backgroundColor: '#3063A5' }]
   public barChartData: ChartDataSets[] = [
-    { data: [165, 549, 1680, 81, 5776, 565, 470, 81, 5776, 565, 470], label: 'expense' },
+    { data: [], label: 'expense' },
   ];
 
   getAllUserBalance(){
@@ -113,6 +115,21 @@ export class ActivityDashboardComponent implements OnInit {
     })
   }
   
+  getYearlyTransactions(){
+    this.dashboardService.getYearlyTransactions(111, null).subscribe((data) => {
+      console.log(data)
+      for(let ind=0; ind<12; ind+=1){
+        let key: any = this.barChartLabels[ind]
+        if(data[key]==0){
+          this.barChartData[0].data?.push(ind*20)
+        }
+        else{
+          this.barChartData[0].data?.push(data[key])
+        }
+      }
+    })
+  }
+
 
 //   data: {
 //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],

@@ -8,20 +8,27 @@ import { ResetPasswordComponent } from 'src/app/component/reset-password/reset-p
 const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent
-  },
-  {
-    path: 'viewprofile',
-    component: MyProfileComponent
-  },
-  {
-    path: 'kyc',
-    component: KycDetailsComponent
-  },
-  {
-    path: 'changepassword',
-    component: ResetPasswordComponent
+    component: ProfileComponent,
+    children: [
+      {
+        path: 'view',
+        component: MyProfileComponent
+      },
+      {
+        path: 'kyc',
+        component: KycDetailsComponent
+      },
+      {
+        path: 'changepassword',
+        component: ResetPasswordComponent
+      },
+      {
+        path: '**',
+        component: MyProfileComponent
+      }
+    ]
   }
+ 
 ];
 
 @NgModule({

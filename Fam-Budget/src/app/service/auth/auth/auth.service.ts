@@ -34,17 +34,20 @@ export class AuthService {
   }
 
   signup(formDetails: any): Observable<any> {
-    return this.http.post(API_URL.BASE_URL+API_URL.SIGNUP,
+    return this.http.post(
+      'http://localhost:3000/dev/auth/signup',
+      // API_URL.BASE_URL+API_URL.SIGNUP,
       { 
-        firstname: formDetails.value.firstname,
-        lastname: formDetails.value.lastname,
+        firstName: formDetails.value.firstname,
+        lastName: formDetails.value.lastname,
         gender: formDetails.value.gender,
         mobile: formDetails.value.mobile,
         email: formDetails.value.email,
-        relationship: formDetails.value.relationship,
-        pannumber: formDetails.value.pannumber,
+        bcity: 'City-ABC',
+        panNumber: formDetails.value.pannumber,
         age: formDetails.value.age,
-        files: formDetails.value.file
+        files: formDetails.value.file,
+        role: 'Primary-Account-Holder'
     },
       {headers: this.headerOptions}
     );
@@ -57,16 +60,16 @@ export class AuthService {
       );
   }
 
-  confirmPassword(username: any,newPassword: any, password: any ): Observable<any> {
+  confirmPassword(username: any,code: any, password: any ): Observable<any> {
     return this.http.post(API_URL.BASE_URL + API_URL.CONFIRM_PASSWORD,
-      { username: username, password: password, newPassword: newPassword }, 
+      { username: username, code: code, newPassword: password }, 
       {headers: this.headerOptions}
       );
   }
 
-  resetTemporaryPassword(username: any,newPassword: any, code: any ): Observable<any> {
+  resetTemporaryPassword(username: any,newPassword: any, currentPassword: any ): Observable<any> {
     return this.http.post(API_URL.BASE_URL + API_URL.RESET_TEMPORARY,
-      { username: username, code: code, newPassword: newPassword }, 
+      { username: username, password: currentPassword, newPassword: newPassword }, 
       {headers: this.headerOptions}
       );
   }

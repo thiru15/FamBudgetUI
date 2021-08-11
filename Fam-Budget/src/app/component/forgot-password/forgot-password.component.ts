@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+import { AuthService } from 'src/app/service/auth/auth/auth.service';
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -7,19 +9,55 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
-  form = new FormGroup({
-    username: new FormControl(''),
-    //password: new FormControl('')
-  })
+  username: any;
+  form: FormGroup
+  codeConfirmForm: FormGroup
+
+  constructor(private authService: AuthService) { 
+    this.form = new FormGroup({
+      username: new FormControl('', Validators.required),
+      //password: new FormControl('')
+    })
+
+    this.codeConfirmForm = new FormGroup({
+      newPassword: new FormControl('', Validators.required),
+      code: new FormControl('', Validators.required)
+      //password: new FormControl('')
+    })
+  }
+  
+
   code! : boolean
 
   ngOnInit(): void {
     this.code = false
   }
-  submit(){
+  forgotPassSubmit(){
     console.log(this.form.value)
-    this.code = true;
+
+    this.username = this.form.value.username
+    this.authService.forgotPassword(this.form.value.username).pipe(first()).subscribe( (data) => {
+      console.log(data)
+      if(data=="SUCCESS"){
+        this.code = true;
+      }else{
+        //show toaster
+      }
+    })
   }
+
+  confirmCodeSubmit(){
+    console.log(this.form.value.username)
+    this.authService.confirmPassword('6', this.codeConfirmForm.value.code, this.codeConfirmForm.value.newPassword)
+    .pipe(first()).subscribe( (data) => {
+      console.log(data)
+      if(data=="SUCCESS"){
+        //show toaster
+      }else{
+        //show toaster
+      }
+    })
+  }
+  
 
 }

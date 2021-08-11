@@ -99,8 +99,9 @@ export class DashboardService {
     );
   }
 
-  getYearlyTransactions(accountNumber: string | number | boolean, secondaryId: string | number | boolean): Observable<any> {
-    const parameters = new HttpParams().set('accountNumber', accountNumber).set('secondaryId' , secondaryId  )
+  getYearlyTransactions(accountNumber: string | number | boolean, secondaryId: any): Observable<any> {
+    const parameters = new HttpParams().set('accountNumber', accountNumber)
+    if(secondaryId) { parameters.set('secondaryId' , secondaryId ) }
     const url = API_URL.BASE_URL + API_URL.GET_MONTHLY_REPORTS
     return this.http.get(url,
       { headers: this.headerOptions, params: parameters}
@@ -137,6 +138,9 @@ export class DashboardService {
       { headers: this.headerOptions}
     );
   }
+
+
+
   
 
 }

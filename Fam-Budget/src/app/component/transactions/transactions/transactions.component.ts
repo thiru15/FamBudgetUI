@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import { jsPDF } from 'jspdf';
 import { first } from 'rxjs/internal/operators/first';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 
@@ -44,10 +45,12 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  @ViewChild('transactionData', {static: false}) transactionData!:ElementRef;
+  
   constructor(private DashboardService: DashboardService, public fb: FormBuilder) {
     this.reactiveForm()
     this.getAllTransactions()
+    console.log()
     // Assign the data to the data source for the table to render
   }
 
@@ -76,6 +79,32 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   onSearch(){
     console.log(this.myForm.value)
     this.getAllTransactions()
+  }
+
+  downloadPDF(){
+    // let DATA = this.htmlData.nativeElement;
+    // let doc = new jspdf('p','pt', 'a4');
+    // doc.setLineWidth(10)
+    // doc.html(document.getElementById('hi') || '',{
+    //   callback :()=>{
+    //       doc.save()
+    //   },
+    //   // x: 10,
+    //   // y: 10
+    // })
+
+    const doc = new jsPDF();
+
+    const pdfTable = this.transactionData.nativeElement;
+
+    doc.html(document.getElementById('hi') || '', {
+      callback(result) {
+        result.save('one.pdf');
+      },
+      // x: 10,
+      // y: 10
+    });
+
   }
 }
 

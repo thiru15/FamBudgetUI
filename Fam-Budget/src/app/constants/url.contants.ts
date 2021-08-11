@@ -5,5 +5,6 @@ export const API_URL = {
     
     GET_TRANSACTIONS: 'transaction/getTransaction',
     GET_SECONDARY_USERS: 'secondaryaccount/get/all',
-    GET_CARDS: 'card/get'
+    GET_CARDS: 'card/get',
+    GET_DOWNLOADS: 'transaction/download'
 }

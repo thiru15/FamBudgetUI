@@ -51,6 +51,16 @@ export class DashboardService {
      {headers: this.headerOptions, params: parameters}
      );
  }
+ downloadTransactions(accountNumber: any, customerId: any,secondaryId: any): Observable<any> {
+  const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId).set('secondaryId', secondaryId)
+
+  const url = API_URL.BASE_URL + API_URL.GET_DOWNLOADS
+  return this.http.get(url,
+    {headers: this.headerOptions, params: parameters}
+    );
+
+ }
+
 
 
 

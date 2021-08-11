@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartColor, ChartOptions, ChartType ,ChartDataSets} from 'chart.js';
-import { Color, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataSet } from 'ng2-charts';
+import { Color, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, MultiDataSet, SingleDataSet } from 'ng2-charts';
+import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 
 @Component({
   selector: 'app-activity-dashboard',
@@ -9,18 +10,24 @@ import { Color, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, Sing
 })
 export class ActivityDashboardComponent implements OnInit {
 
-  constructor() { 
+  recentTransactions:any;
+  allocatedAndSpend: any;
+  secondaryUsers: any[] = [];
+  balance: any;
+  constructor(private dashboardService: DashboardService) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
+    this.getAllUserBalance()
+    this.getRecentTransactions()
+ 
 }
 
   ngOnInit(): void {
-    this.addColor();
     
   }
   colors = [ '#367588','#002244', '#132257' ,'#0C2340','#00CCFF']
   public usersChartLabels: Label[] = [ ['Funds Allocated'], ['Money Spent']];
-  public usersChartData: SingleDataSet = [500, 200];
+  // public usersChartData: MultiDataSet = [[]];
   public usersChartType: ChartType = 'doughnut';
   public userChartColor: Color[] = [{ backgroundColor: ['#0047AB', '#40B5AD'] }]
   public userChartOptions: ChartOptions = {
@@ -44,11 +51,10 @@ export class ActivityDashboardComponent implements OnInit {
       this.res.push( this.colors[index % colorsLength]);
 
     }
-    console.log("Result ",this.res);
   })
   
-  public pieChartLabels: Label[] = ['Sangeetha PL', 'Thirumalai S', 'Arun'];
-  public pieChartData: SingleDataSet = [300, 500, 100,200,89,97,76];
+  public pieChartLabels: Label[] = ["You"];
+  public pieChartData: SingleDataSet = [];
   public pieChartType: ChartType = 'pie';
   public pieChartColor: Color[] = [{backgroundColor: this.res}]
   public pieChartLegend = true;
@@ -83,7 +89,31 @@ export class ActivityDashboardComponent implements OnInit {
     { data: [165, 549, 1680, 81, 5776, 565, 470, 81, 5776, 565, 470], label: 'expense' },
   ];
 
+  getAllUserBalance(){
+    this.dashboardService.getBalance(111, 1, '').subscribe( (data) => {
+      console.log(data)
+      this.secondaryUsers = data.secondaryaccounts
+      
+      this.balance = data.primaryaccount[0].balance
+      this.pieChartData.push(data.primaryaccount[0].actualBalance)
+
+      for(let ind=0; ind< this.secondaryUsers.length; ind+=1){
+        this.pieChartData.push(this.secondaryUsers[ind].fundsAllocated)
+        this.pieChartLabels.push(this.secondaryUsers[ind].firstName)
+      }
+      this.addColor();
+    })
+    // console.log('pie chart data', this.pieChartData)
+  }
+
+  getRecentTransactions(){
+    this.dashboardService.getRecentTransactions(111).subscribe((data) => {
+      console.log(data)
+      this.recentTransactions = data
+    })
+  }
   
+
 //   data: {
 //     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
 //     datasets: [{

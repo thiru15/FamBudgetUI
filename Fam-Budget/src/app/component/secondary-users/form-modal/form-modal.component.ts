@@ -3,6 +3,7 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import { FormGroup, FormBuilder } from "@angular/forms";
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 import { DialogData } from '../secondary-users/secondary-users.component';
 
 @Component({
@@ -12,12 +13,13 @@ import { DialogData } from '../secondary-users/secondary-users.component';
 })
 export class FormModalComponent implements OnInit {
 
-  constructor(public fb: FormBuilder) {}
+  constructor(public fb: FormBuilder, private dashboardService: DashboardService) {}
 
   myForm! : FormGroup;
   ngOnInit(): void {
     this.reactiveForm()
   }
+  // step="0.01" 
   reactiveForm() {
     this.myForm = this.fb.group({
       firstname: ['',[Validators.required]],
@@ -27,14 +29,19 @@ export class FormModalComponent implements OnInit {
       email: ['',[Validators.required]],
       relationship: ['',[Validators.required]],
       pannumber: ['',[Validators.required]],
-      age: ['',[Validators.required]]
+      isMinor: ['false',[Validators.required]],
+      fundsAllocated: [100.0, Validators.required, ]
     })
   }
   //email = new FormControl('', [Validators.required, Validators.email]);
   submitForm(){
     console.log("In submit");
     console.log(this.myForm.value);
+    this.createSecondaryUser()
   }
 
+  createSecondaryUser(){
+    this.dashboardService.createSecondaryUser(111, this.myForm)
+  }
 
 }

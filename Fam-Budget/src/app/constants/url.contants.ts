@@ -5,5 +5,29 @@ export const API_URL = {
     
     GET_TRANSACTIONS: 'transaction/getTransaction',
     GET_SECONDARY_USERS: 'secondaryaccount/get/all',
-    GET_CARDS: 'card/get'
+    GET_CARDS: 'card/get',
+    GET_MONTHLY_REPORTS: 'reports/getMonthly',
+    GET_BALANCE: 'reports/getBalance',
+    GET_RECENT_TRANSACTION: 'reports/getRecentTransactions',
+    GET_POLICY: 'policy/get',
+
+
+    CREATE_TRANSACTION: 'transaction/createTransaction',
+    PRIMARY_SIGNUP: 'auth/signup',
+    POST_LOGIN: 'auth/login',
+    FORGOT_PASSWORD: 'auth/forgotPassword',
+    CONFIRM_PASSWORD: 'auth/confirmPassword',
+    RESET_TEMPORARY: 'auth/resetTemporaryPassword',
+    SECONDARY_SIGNUP: 'secondaryaccount/create',
+    SECONDARY_USER_DISABLE: 'secondaryaccount/delete',
+    CREATE_CARD: 'card/create',
+    CREATE_POLICY: 'policy/create',
+    UPDATE_POLICY: 'policy/update',
+    UPDATE_KYC_PRIMARY: 'accountHolder/updateKyc'
+
 }
+
+
+
+
+

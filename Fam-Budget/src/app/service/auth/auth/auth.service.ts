@@ -28,29 +28,48 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
     return this.http.post(API_URL.BASE_URL + API_URL.LOGIN,
-      {username, password},
+      {'username': username, 'password': password},
       {headers: this.headerOptions}
     );
   }
 
   signup(formDetails: any): Observable<any> {
-    return this.http.post('http://localhost:3000/dev/auth/signup',
-      {files: formDetails.value.file},
+    return this.http.post(API_URL.BASE_URL+API_URL.SIGNUP,
+      { 
+        firstname: formDetails.value.firstname,
+        lastname: formDetails.value.lastname,
+        gender: formDetails.value.gender,
+        mobile: formDetails.value.mobile,
+        email: formDetails.value.email,
+        relationship: formDetails.value.relationship,
+        pannumber: formDetails.value.pannumber,
+        age: formDetails.value.age,
+        files: formDetails.value.file
+    },
       {headers: this.headerOptions}
     );
   }
 
-  // forgotPassword(email): Observable<any> {
-  //   return from(Auth.forgotPassword(email));
-  // }
+  forgotPassword(username: any): Observable<any> {
+    return this.http.post(API_URL.BASE_URL + API_URL.FORGOT_PASSWORD,
+      { username: username }, 
+      {headers: this.headerOptions}
+      );
+  }
 
-  // confirmPassword(code, newPassword, email): Observable<any> {
-  //   return from(Auth.forgotPasswordSubmit(email, code, newPassword));
-  // }
+  confirmPassword(username: any,newPassword: any, password: any ): Observable<any> {
+    return this.http.post(API_URL.BASE_URL + API_URL.CONFIRM_PASSWORD,
+      { username: username, password: password, newPassword: newPassword }, 
+      {headers: this.headerOptions}
+      );
+  }
 
-  // resetTemporaryPassword(user, newPassword): Observable<any> {
-  //   return from(Auth.completeNewPassword(user, newPassword));
-  // }
+  resetTemporaryPassword(username: any,newPassword: any, code: any ): Observable<any> {
+    return this.http.post(API_URL.BASE_URL + API_URL.RESET_TEMPORARY,
+      { username: username, code: code, newPassword: newPassword }, 
+      {headers: this.headerOptions}
+      );
+  }
 
   logout() {
     localStorage.clear();
@@ -75,5 +94,6 @@ export class AuthService {
       {headers: this.headerOptions}
       );
   }
+
 
 }

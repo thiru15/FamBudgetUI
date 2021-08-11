@@ -44,15 +44,20 @@
     <p>
         <mat-form-field appearance="fill">
             <mat-label>Pan Number</mat-label>
-            <input formControlName="pannumber" matInput placeholder="Relationship">
+            <input formControlName="pannumber" matInput placeholder="Pan Number">
         </mat-form-field>
     </p>
-
     <p>
         <mat-form-field appearance="fill">
-            <mat-label>Age</mat-label>
-            <input formControlName="age" matInput placeholder="Relationship">
+            <mat-label>Funds to Allocate</mat-label>
+            <input formControlName="pannumber" matInput placeholder="Funds to Allocate">
         </mat-form-field>
+    </p>
+    <p>
+    <mat-radio-group aria-label="Select User Age" formControlName="isMinor" appearance="fill" color="primary">
+        <mat-radio-button value="true">minor</mat-radio-button>&nbsp;
+        <mat-radio-button value="false">major</mat-radio-button>
+     </mat-radio-group>
     </p>
     <div class="formdiv">
         <button mat-raised-button color="primary" [disabled]="myForm.invalid">Submit</button>

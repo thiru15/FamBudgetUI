@@ -1,24 +1,25 @@
-<!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-
 <div class="wrapper">
 
   <div class="content">
     <div fxLayout="row wrap" fxLayoutGap="16px grid" class="flex-container">
-      <div fxFlex="30%" fxFlex.xs="100%" fxFlex.sm="50%" fxFlex.xl="10%"
-        *ngFor="let movie of ['doc', 'doc', 'doc', 'doc', 'doc', 'doc']" class="flex-item">
+      <div fxFlex="30%" fxFlex.xs="50%" fxFlex.sm="50%" fxFlex.xl="10%"
+        *ngFor="let user of secondaryUsers;" class="flex-item">
         <mat-card class="mat-elevation-z4 prof-card">
 
           <mat-card-header class="card-header">
-            <ngx-avatar mat-card-avatar name="Ted Mosby" bgColor="#0F2027" size=45 class="example-header-image">
+            <ngx-avatar mat-card-avatar name="{{user.firstName}} {{user.lastName}}" bgColor="#0F2027" size=41 class="example-header-image">
             </ngx-avatar>
             <!-- <div  size=60></div> -->
             <!-- <mat-card-title>Thirumalai S</mat-card-title> -->
-            <mat-card-subtitle style="font-weight: bold;">Thirumalai S</mat-card-subtitle>
-            <mat-card-subtitle>employee</mat-card-subtitle>
+            <mat-card-subtitle style="font-weight: bold;">{{user.firstName}} {{user.lastName}}</mat-card-subtitle>
+            <mat-card-subtitle>{{user.relationship}}</mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
+            <!-- <div *ngFor='let i of userData'>
+              {{i.fundsAllocated}}
+            </div> -->
             <div style="display: block;">
-              <canvas baseChart [data]="usersChartData" [labels]="usersChartLabels" [chartType]="usersChartType"
+              <canvas baseChart [data]="[user.fundsAllocated, user.fundsSpent]" [labels]="usersChartLabels" [chartType]="usersChartType"
                 [options]="userChartOptions" [colors]="userChartColor" [legend]="true"  width="300" height="200"
                 style='width:326px;height:240px;'>
               </canvas>
@@ -32,7 +33,7 @@
   <div style="background-color: #f5f5f5">
     <div style="display: block;">
       <div class="balance">
-        <h3>Balance Rs:12000</h3></div>
+        <h3>Balance Rs:{{balance}}</h3></div>
       <canvas baseChart 
         [data]="pieChartData" 
         [labels]="pieChartLabels" 
@@ -60,18 +61,19 @@
     </div>
   </div>
   <div>
-    <div class="container">
-      <h3>Transactions</h3>
+    <h3>Transactions</h3>
+    <div class="container" *ngFor="let trans of recentTransactions">
       <div class="transaction">
-        <h4>Meena M</h4>
+        <h4>{{trans.transactionStartedAt | date:'medium' }}</h4>
         <div>
-          <b>Water Bill</b>
+          <b>{{trans.description}}</b>
           <br/>
           <small>Successfully</small>
         </div>
-        <b style="color: darkseagreen;">+$120</b>
+        <b *ngIf="trans.senderAccountNumber==111" style="color: #E84398;">-₹{{trans.amount}}</b>
+        <b *ngIf="trans.senderAccountNumber!=111" style="color: darkseagreen;">+₹{{trans.amount}}</b>
       </div>
-      <div class="transaction">
+      <!-- <div class="transaction">
         <h4>Madhumitha</h4>
         <div>
           <b>Water Bill</b>
@@ -88,7 +90,7 @@
           <small>Successfully</small>
         </div>
         <b style="color: darkseagreen;">+$60</b>
-      </div>
+      </div> -->
     </div>
     
   

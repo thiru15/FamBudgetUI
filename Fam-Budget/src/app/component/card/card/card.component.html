@@ -1,12 +1,14 @@
 
+<div *ngFor="let card of cards">
 <div class="credit-card">
     <div class="card-heading">
       <div class="top">
-        <p>HDFC BANK</p>
+        <p>FAM BANK</p>
         <img src="https://expense.happay.in/assets/images/master_card_logo.svg" />
       </div>
       <div class="cardnum">
-        <h3>5261 &nbsp; 24xx &nbsp; xxxx &nbsp; 38xx</h3>
+        <h3>{{card.cardNumber| slice:0:4}} &nbsp; {{card.cardNumber| slice:4:6}}XX &nbsp; XXXX &nbsp; {{card.cardNumber| slice:12:16}}</h3>
+        <!-- <h3>5261 &nbsp; 24xx &nbsp; xxxx &nbsp; 38xx</h3> -->
       </div>
       <div class="bottom">
         CardHolder <br/>
@@ -14,7 +16,8 @@
       </div>
     </div>
   </div>
-  <div class="credit-card">
+</div>
+  <!-- <div class="credit-card">
     <div class="card-heading">
       <div class="top">
         <p>HDFC BANK</p>
@@ -57,6 +60,4 @@
         CardHolder <br/>
         <b>Thirumalai S</b>
       </div>
-    </div>
-    
-  </div>
+    </div>  </div> -->

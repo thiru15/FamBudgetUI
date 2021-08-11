@@ -4,5 +4,6 @@ export const API_URL = {
     LOGIN: 'auth/login',
     
     GET_TRANSACTIONS: 'transaction/getTransaction',
-    GET_SECONDARY_USERS: 'secondaryaccount/get/all'
+    GET_SECONDARY_USERS: 'secondaryaccount/get/all',
+    GET_CARDS: 'card/get'
 }

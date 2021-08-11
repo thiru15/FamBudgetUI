@@ -10,7 +10,7 @@ export const API_URL = {
     GET_BALANCE: 'reports/getBalance',
     GET_RECENT_TRANSACTION: 'reports/getRecentTransactions',
     GET_POLICY: 'policy/get',
-
+    GET_DOWNLOADS: 'transaction/download',
 
     CREATE_TRANSACTION: 'transaction/createTransaction',
     PRIMARY_SIGNUP: 'auth/signup',

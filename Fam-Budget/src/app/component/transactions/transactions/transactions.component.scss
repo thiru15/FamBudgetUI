@@ -35,3 +35,12 @@ td, th {
 th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   text-align: center;
 }
+.transaction-table:nth-child(even){
+  background-color: red;
+}
+      
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+table{
+  width: 100%;
+}

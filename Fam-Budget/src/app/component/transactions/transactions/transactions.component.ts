@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import { jsPDF } from 'jspdf';
 import { first } from 'rxjs/internal/operators/first';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 
@@ -13,7 +12,6 @@ export interface TransactionData {
   description: string;
   amount: number;
   transactionStartedAt: string,
-  receiverAccountNumber: number
 }
 
 @Component({
@@ -24,6 +22,7 @@ export interface TransactionData {
 export class TransactionsComponent implements OnInit,AfterViewInit {
 
   myForm! : FormGroup;
+  htmlData: any;
   // constructor() { }
   reactiveForm() {
     this.myForm = this.fb.group({
@@ -36,21 +35,22 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
     }
   )
   }
+  name = 'Angular Html To Pdf ';
+   pdfTable :any;
 
   ngOnInit(): void {
   }
-  displayedColumns: string[] = [  "transactionID","merchant", 'description','amount', 'transactionStartedAt', 'receiverAccountNumber' ];
+  displayedColumns: string[] = [  "transactionID","merchant", 'description','amount', 'transactionStartedAt'];
   dataSource!: MatTableDataSource<TransactionData>;
   data: TransactionData[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild('transactionData', {static: false}) transactionData!:ElementRef;
+
   
   constructor(private DashboardService: DashboardService, public fb: FormBuilder) {
     this.reactiveForm()
     this.getAllTransactions()
-    console.log()
     // Assign the data to the data source for the table to render
   }
 
@@ -76,35 +76,17 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
       this.dataSource.sort = this.sort;
     })
   }
+  downloadTransactions(){
+    return this.DashboardService.downloadTransactions(111, 1, undefined).pipe(first()).subscribe( (data) => {
+      console.log("data ",data);
+      window.open(data);
+    })
+
+  }
   onSearch(){
     console.log(this.myForm.value)
     this.getAllTransactions()
   }
 
-  downloadPDF(){
-    // let DATA = this.htmlData.nativeElement;
-    // let doc = new jspdf('p','pt', 'a4');
-    // doc.setLineWidth(10)
-    // doc.html(document.getElementById('hi') || '',{
-    //   callback :()=>{
-    //       doc.save()
-    //   },
-    //   // x: 10,
-    //   // y: 10
-    // })
-
-    const doc = new jsPDF();
-
-    const pdfTable = this.transactionData.nativeElement;
-
-    doc.html(document.getElementById('hi') || '', {
-      callback(result) {
-        result.save('one.pdf');
-      },
-      // x: 10,
-      // y: 10
-    });
-
-  }
 }
 

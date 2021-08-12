@@ -87,6 +87,10 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
     console.log(this.myForm.value)
     this.getAllTransactions()
   }
+  onDownload(){
+    console.log("Downloadedd ");
+    this.downloadTransactions();
+  }
 
 }
 

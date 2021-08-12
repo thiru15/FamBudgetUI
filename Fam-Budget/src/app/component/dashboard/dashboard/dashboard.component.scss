@@ -29,3 +29,20 @@
 .mat-tab-header {
     position: fixed !important;
 }
+mat-tab-group{
+    justify-content: flex-end !important;
+
+}
+.mat-tab{
+    justify-content: flex-end !important;
+
+
+}
+ 
+::ng-deep .mat-tab-labels{
+    justify-content: flex-end !important;
+}
+
+.nav{
+    justify-content: flex-end !important;
+}

@@ -42,6 +42,14 @@ export class DashboardService {
       { headers: this.headerOptions }
     );
   }
+  sendMoney(accountNumber: any,secondaryId: number, amount: number): Observable<any> {
+    //  const parameters = new HttpParams().set('accountNumber', accountNumber)
+    const url = API_URL.BASE_URL + API_URL.SEND_MONEY
+    return this.http.post(url,
+      { 'accountNumber': accountNumber, 'amount':amount,'secondaryId':secondaryId },
+      { headers: this.headerOptions }
+    );
+  }
 
   getCards(accountNumber: any, customerId: any, secondaryId: any, senderSecondary: any): Observable<any> {
     const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId).set('secondaryId', secondaryId).set('senderSecondary', senderSecondary)
@@ -65,16 +73,30 @@ export class DashboardService {
 
   createSecondaryUser(accountNumber: any, form: FormGroup ): Observable<any> {
     const url = API_URL.BASE_URL + API_URL.SECONDARY_SIGNUP
+    const obj = {accountNumber: accountNumber,
+      firstName: form.value.firstname,
+      lastName: form.value.lastname,
+      email: form.value.email,
+      mobile: form.value.mobile,
+      gender: form.value.gender,
+      relationship: form.value.relationship,
+      isKycVerified: form.value.isKycVerified,
+      bcity: form.value.bcity || '',
+      panNumber: form.value.pannumber,
+      isMinor : form.value.isMinor,
+      fundsAllocated: form.value.fundsAllocated
+    }
+    console.log("Object ",obj);
     return this.http.post(url,
       {accountNumber: accountNumber,
-        firstName: form.value.firstName,
-        lastName: form.value.lastName,
+        firstName: form.value.firstname,
+        lastName: form.value.lastname,
         email: form.value.email,
         mobile: form.value.mobile,
         gender: form.value.gender,
         relationship: form.value.relationship,
         isKycVerified: form.value.isKycVerified,
-        bcity: form.value.bcity || '',
+        bcity: form.value.bcity || 'chennai',
         panNumber: form.value.pannumber,
         isMinor : form.value.isMinor,
         fundsAllocated: form.value.fundsAllocated
@@ -150,6 +172,7 @@ export class DashboardService {
     );
 
  }
+ 
 
  deleteSecondaryUser(secondaryId: any, isActive: boolean): Observable<any> {
   const url = API_URL.BASE_URL + API_URL.DELETE_SECONDARY_USER

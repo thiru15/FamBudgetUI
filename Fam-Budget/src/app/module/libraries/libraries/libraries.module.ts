@@ -23,6 +23,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChartsModule } from 'ng2-charts';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -50,7 +52,8 @@ import { ChartsModule } from 'ng2-charts';
     FlexLayoutModule,
     MatGridListModule,
     MatDialogModule,
-    ChartsModule
+    ChartsModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatToolbarModule,
@@ -74,7 +77,8 @@ import { ChartsModule } from 'ng2-charts';
     AvatarModule,
     MatGridListModule,
     MatDialogModule,
-    ChartsModule
+    ChartsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class LibrariesModule { }

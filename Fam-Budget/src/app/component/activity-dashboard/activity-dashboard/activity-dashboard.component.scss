@@ -16,6 +16,7 @@
 .flex-container{
   max-height: 47vh;
   overflow-y: scroll;
+  margin-left: 3% !important;
 }
 .prof-card{
     margin-bottom: 16px;
@@ -89,4 +90,9 @@
 .balance{
   display: flex !important;
   justify-content: center !important;
+}
+.header-dashboard{
+  color: #0081bc;
+  font-family: cursive;
+  margin-left: 2%;
 }

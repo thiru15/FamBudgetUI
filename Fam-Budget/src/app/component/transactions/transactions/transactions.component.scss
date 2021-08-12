@@ -44,3 +44,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 table{
   width: 100%;
 }
+mat-progress-spinner{
+  display: grid;
+  place-items: center;
+}

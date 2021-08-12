@@ -23,6 +23,7 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
 
   myForm! : FormGroup;
   htmlData: any;
+  loading = false;
   // constructor() { }
   reactiveForm() {
     this.myForm = this.fb.group({
@@ -50,6 +51,7 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   
   constructor(private DashboardService: DashboardService, public fb: FormBuilder) {
     this.reactiveForm()
+    this.loading = true; 
     this.getAllTransactions()
     // Assign the data to the data source for the table to render
   }
@@ -69,11 +71,15 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   }
 
    getAllTransactions() {
+    
+    
     return this.DashboardService.getTransactions(111, 1, this.myForm).pipe(first()).subscribe( (data) => {
       this.data = data
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.loading = false;
+
     })
   }
   downloadTransactions(){

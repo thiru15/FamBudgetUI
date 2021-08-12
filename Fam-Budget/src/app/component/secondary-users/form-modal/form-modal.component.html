@@ -1,5 +1,5 @@
 <div class="add_user_form">
-    <form [formGroup]="myForm"  (ngSubmit)="submitForm()" novalidate>
+    <form [formGroup]="myForm"   (ngSubmit)="submitForm()" novalidate>
     <h3>CREATE NEW ACCOUNT</h3>
     <p>
         <mat-form-field appearance="fill">
@@ -29,9 +29,9 @@
         <mat-form-field appearance="fill">
             <mat-label>Gender</mat-label>
             <mat-select formControlName="gender">
-                <mat-option value="valid">Male</mat-option>
-                <mat-option value="valid">Female</mat-option>
-                <mat-option value="valid">Other</mat-option>
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
             </mat-select>
         </mat-form-field>
     </p>
@@ -50,7 +50,7 @@
     <p>
         <mat-form-field appearance="fill">
             <mat-label>Funds to Allocate</mat-label>
-            <input formControlName="pannumber" matInput placeholder="Funds to Allocate">
+            <input formControlName="fundsAllocated" matInput placeholder="Funds to Allocate">
         </mat-form-field>
     </p>
     <p>
@@ -60,7 +60,7 @@
      </mat-radio-group>
     </p>
     <div class="formdiv">
-        <button mat-raised-button color="primary" [disabled]="myForm.invalid">Submit</button>
+        <button #closebutton mat-raised-button color="primary" [disabled]="myForm.invalid">Submit</button>
     </div>
 </form>
 </div>

@@ -1,3 +1,5 @@
+<mat-spinner diameter="40" mode="determinate"></mat-spinner>
+
 <mat-sidenav-container class="container">
     <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true" [formGroup]="myForm">
       <mat-toolbar class="" style="text-align: center;">Menu</mat-toolbar>
@@ -49,7 +51,9 @@
 
 
     </mat-sidenav>
-    <mat-sidenav-content class="content">
+    <mat-spinner diameter="40" mode="determinate" *ngIf="loading"></mat-spinner>
+    <mat-sidenav-content class="content" *ngIf="!loading">
+      <mat-spinner diameter="40" mode="determinate"></mat-spinner>
         <mat-form-field appearance="standard">
             <mat-label>Filter</mat-label>
             <input matInput (keyup)="applyFilter($event)" placeholder="Type Something" #input>

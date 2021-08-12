@@ -130,14 +130,15 @@ export class DashboardService {
     );
   }
 
-  createPolicy(customerId: any, accountNumber: any, isSecondaryHolder: any,expirationDate: any,  spendLimit: any): Observable<any> {
+  createPolicy(customerId: any, accountNumber: any, isSecondaryHolder: any, secondaryId: any, expirationDate: any,  spendLimit: any): Observable<any> {
     const url = API_URL.BASE_URL + API_URL.CREATE_POLICY
     return this.http.post(url,
       { 'customerId': customerId,
         'accountNumber': accountNumber,
         'isSecondaryHolder': isSecondaryHolder,
         'expirationDate' : expirationDate,
-        'spendLimit': spendLimit
+        'spendLimit': spendLimit,
+        'secondaryId': secondaryId
       },
       { headers: this.headerOptions }
     );
@@ -152,7 +153,7 @@ export class DashboardService {
   }
 
   updatePolicy(accountNumber: any,  policyId: any, customerId: any, expirationDate: any, spendLimit: any): Observable<any> {
-    const url = API_URL.BASE_URL + API_URL.GET_MONTHLY_REPORTS
+    const url = API_URL.BASE_URL + API_URL.UPDATE_POLICY
     return this.http.put(url,
       {   'policyId': policyId,'accountNumber':  accountNumber, 'customerId': customerId,
       'expirationDate' : expirationDate,
@@ -171,6 +172,16 @@ export class DashboardService {
     );
 
  }
+ 
+
+ deleteSecondaryUser(secondaryId: any, isActive: boolean): Observable<any> {
+  const url = API_URL.BASE_URL + API_URL.DELETE_SECONDARY_USER
+  return this.http.delete(url,
+    { headers: this.headerOptions,
+      body: { "secondaryId": secondaryId, "isActive": isActive}
+   },
+  );
+}
  
 
 

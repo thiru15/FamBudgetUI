@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 import { FormModalComponent } from '../form-modal/form-modal.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { PolicyComponent } from '../../policy/policy.component';
+import { first } from 'rxjs/operators';
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -26,13 +28,19 @@ export interface DialogData {
     ])
   ]
 })
+
 export class SecondaryUsersComponent implements OnInit {
   secondaryUsers: any[] = [];
+  policies: any;
+  gotPolicies = false
   accountNumber : any;
   active :any;
+  secondaryUserId = 123;
   avatarColors: any[] = ["#ffafbd", "#ffc3a0", "#753a88", "#ee9ca7", "#42275a", "#de6262", "#004e92"]
+  policyPresent = false
 
-  constructor(public dialog: MatDialog, private dashboardService: DashboardService) {
+  constructor(private dialog: MatDialog, private dashboardService: DashboardService, private cdref: ChangeDetectorRef) {
+    this.getPolicy()
     this.getSecondarUsers()
   }
 
@@ -45,14 +53,10 @@ openDialog() {
 }
 flip: string = 'inactive';
 
-activate() {
-  if(this.active == true){
-    this.active = false;
-  }
-  else{
-    this.active = true;
-  }
-
+activate(secondaryId: number, isActive: boolean ) {
+  this.dashboardService.deleteSecondaryUser(secondaryId, isActive).subscribe( (data) => {
+    console.log(data)
+  })
 }
 // chooseAvatarColor(name: string){
 //   console.log(this.avatarColors[name.charCodeAt(0)%this.avatarColors.length])
@@ -67,8 +71,40 @@ getSecondarUsers(){
         this.secondaryUsers[ind]["avatarColor"] = this.avatarColors[ind%7]
         console.log(this.secondaryUsers[ind]["avatarColor"])
     }
-
   })
 }
+
+getPolicy(){
+  return this.dashboardService.getPolicies(111, 1).subscribe( (data) => {
+      // console.log(data)
+      this.policies = data
+      this.gotPolicies = true
+      this.cdref.markForCheck();
+      console.log("policies ", this.policies)
+  })
+}
+
+openAddPolicy(secondaryId: number, name: string){
+  let dialogRef = this.dialog.open(PolicyComponent)
+  let instance = dialogRef.componentInstance
+  instance.addPolicy = true
+  instance.secondaryId =  secondaryId
+  instance.secondaryUserName = name
+}
+
+openEditPolicy(secondaryId: number, name: string){
+  console.log("edit policy")
+  let dialogRef = this.dialog.open(PolicyComponent)
+  let instance = dialogRef.componentInstance
+  instance.editPolicy = true
+  instance.editPolicyForm.setValue({
+    spendLimit: this.policies[secondaryId].spendLimit,
+    expiryPeriod: this.policies[secondaryId].expirationDate
+  })
+  instance.policyConstraint = this.policies[secondaryId].expirationDate? 'yes-expiry': 'no-expiry'
+  instance.secondaryUserName = name
+  instance.policyId = this.policies[secondaryId].policyId
+}
+
 
 }

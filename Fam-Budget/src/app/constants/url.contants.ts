@@ -24,8 +24,8 @@ export const API_URL = {
     CREATE_POLICY: 'policy/create',
     UPDATE_POLICY: 'policy/update',
     UPDATE_KYC_PRIMARY: 'accountHolder/updateKyc',
-    SEND_MONEY: 'secondaryaccount/add/funds'
-
+    SEND_MONEY: 'secondaryaccount/add/funds',
+    DELETE_SECONDARY_USER: 'secondaryaccount/delete'
 
 }
 

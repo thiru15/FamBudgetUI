@@ -35,8 +35,8 @@ export class AuthService {
 
   signup(formDetails: any): Observable<any> {
     return this.http.post(
-      'http://localhost:3000/dev/auth/signup',
-      // API_URL.BASE_URL+API_URL.SIGNUP,
+      // 'http://localhost:3000/dev/auth/signup',
+      API_URL.BASE_URL+API_URL.SIGNUP,
       { 
         firstName: formDetails.value.firstname,
         lastName: formDetails.value.lastname,
@@ -82,21 +82,5 @@ export class AuthService {
   // resetPassword(oldPassword, newPassword) {
 
   // }
-
-
-  getMovieList(offset: any, limit: any, sortOption: any, languagesArray: any[]): Observable<any> {
-    const parameters = new HttpParams().set('offset', offset).set('limit', limit).set('orderBy', sortOption);
-    return this.http.post(API_URL.BASE_URL + API_URL.SIGNUP,
-      { languages: languagesArray},
-      {headers: this.headerOptions, params: parameters}
-      );
-  }
-
-  getFilterOptions(): Observable<any> {
-    return this.http.get(API_URL.BASE_URL + API_URL.SIGNUP,
-      {headers: this.headerOptions}
-      );
-  }
-
 
 }

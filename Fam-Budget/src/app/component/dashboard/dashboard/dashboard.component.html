@@ -39,11 +39,13 @@
 </button> 
 
 <mat-menu #profileMenu="matMenu" yPosition="below" xPosition="before">
-    <button mat-menu-item routerLink="profile/view">
-        <mat-icon>account_circle</mat-icon>
-        <span>My Profile</span>
-    </button>
-
+    <a href="http://localhost:4200/profile">
+        <button mat-menu-item routerLink="profile/view">
+            <mat-icon>account_circle</mat-icon>
+            <span>My Profile</span>
+        </button>
+    </a>
+  
     <button mat-menu-item disabled>
         <mat-icon>logout</mat-icon>
         <span>Logout</span>

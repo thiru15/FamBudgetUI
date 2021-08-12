@@ -27,7 +27,7 @@ export class ActivityDashboardComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  colors = [ '#367588','#002244', '#132257' ,'#0C2340','#00CCFF']
+  colors = [ '#367588','#002244', '#132257' ,'#0C2340','#B0A6A4','#8B5A00','#8B814C','#008080','#00688B','#754C78','#8B5F65']
   public usersChartLabels: Label[] = [ ['Funds Allocated'], ['Money Spent']];
   // public usersChartData: MultiDataSet = [[]];
   public usersChartType: ChartType = 'doughnut';

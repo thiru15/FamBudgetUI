@@ -1,1 +1,80 @@
-<p>policy works!</p>
+<div *ngIf="addPolicy">
+<div class="add_policy_form">
+    <form [formGroup]="policyForm" (ngSubmit)="submitPolicyForm()" novalidate>
+        <h3>Create new Policy for {{secondaryUserName}}</h3>
+
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Spend Limit on their funds</mat-label>
+                <input formControlName="spendLimit" matInput placeholder="Spend Limit in Rs.">
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a policy option</mat-label>
+                <mat-select [(value)]="policyConstraint">
+                    <mat-option value="yes-expiry">Provide Policy Expiry</mat-option>
+                    <mat-option value="no-expiry">No Expiry</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </p>
+
+        <p *ngIf="policyConstraint=='yes-expiry'">
+            <mat-form-field appearance="fill">
+                <mat-label>Choose an expiry date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="expiryPeriod">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker [startAt]="startDate"></mat-datepicker>
+                </mat-form-field>
+        </p>
+
+
+        <div class="formdiv">
+            <button mat-raised-button color="primary" [disabled]="policyForm.invalid">Submit</button>
+        </div>
+
+    </form>
+</div>
+</div>
+
+
+<div *ngIf="editPolicy">
+    <div class="edit_policy_form">
+        <form [formGroup]="editPolicyForm" (ngSubmit)="submitEditPolicyForm()" novalidate>
+            <h3>Edit Policy of {{secondaryUserName}}</h3>
+    
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Spend Limit on their funds</mat-label>
+                    <input formControlName="spendLimit" matInput placeholder="Spend Limit in Rs.">
+                </mat-form-field>
+            </p>
+    
+            <p>
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a policy option</mat-label>
+                    <mat-select [(value)]="policyConstraint">
+                        <mat-option value="yes-expiry">Provide Policy Expiry</mat-option>
+                        <mat-option value="no-expiry">No Expiry</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+    
+            <p *ngIf="policyConstraint=='yes-expiry'">
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose an expiry date</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="expiryPeriod">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+            </p>
+    
+    
+            <div class="formdiv">
+                <button mat-raised-button color="primary" [disabled]="editPolicyForm.invalid">Submit</button>
+            </div>
+    
+        </form>
+    </div>
+    </div>

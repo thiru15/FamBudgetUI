@@ -2,26 +2,24 @@
     <mat-label>Your Account Number</mat-label>
     <input type="text" matInput formControlName="disabledFiled" readonly>
 </mat-form-field> -->
+<div class="transfer">
 
 <form [formGroup]="transactionGroup" (ngSubmit)="submitForm()" novalidate class="form-group" >    
 
     <h3>Send Money</h3>
-    <mat-form-field  appearance="fill">
-        <mat-label>Merchant</mat-label>
-      <input matInput placeholder="Merchant" formControlName="merchant">
-    </mat-form-field>
+    <mat-form-field formControlName ="merchant" appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option required *ngFor="let Category of secondaryUsers" [value]="Category.secondaryId"  > {{ Category.firstName }} {{ Category.lastName }}</mat-option>
 
-    <mat-form-field  appearance="fill">
-        <mat-label>Description</mat-label>
-      <input matInput placeholder="description" formControlName="description">
+      </mat-select>
     </mat-form-field>
-
     <mat-form-field  appearance="fill">
         <mat-label>Amount</mat-label>
         <input matInput type="number" placeholder="1.0" step="0.01" formControlName="amount">
     </mat-form-field>
     
-    <mat-form-field  appearance="fill">
+    <!-- <mat-form-field  appearance="fill">
         <mat-label>Receiver Account No.</mat-label>
         <input matInput placeholder="account number"  formControlName="receiverAccountNumber">
     </mat-form-field>
@@ -30,10 +28,11 @@
         <mat-radio-button value="Male">IMPS</mat-radio-button>
         <mat-radio-button value="Female">NEFT</mat-radio-button>
         <mat-radio-button value="Female">RTGS</mat-radio-button>
-     </mat-radio-group>
+     </mat-radio-group> -->
 
     <div class="button-wrapper">
-      <button mat-raised-button color="primary" [disabled]="transactionGroup.invalid">Send</button>
+      <button mat-raised-button color="primary" >Send Money</button>
     </div>
 
 </form>
+</div>

@@ -1,0 +1,14 @@
+.mat-list-item.active{
+    background-color:  rgba(229, 231, 233, 0.5)
+}
+.sidenav{
+    background-color: rgba(0,129,188);
+    color: white !important;
+    .mat-toolbar{
+        color: white;
+        background-color: rgba(0,129,188) !important;
+    }
+}
+.mat-list-item{
+    color: white;
+}

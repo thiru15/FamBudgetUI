@@ -8,7 +8,7 @@
         <a mat-list-item (click)="navContentChange('policies')"><i class="far fa-id-badge" ></i> &nbsp; Policies</a>
         <a mat-list-item (click)="navContentChange('transferMoney')"> <i class="fas fa-money-check"></i>&nbsp; Transfer Money</a> -->
 
-        <a mat-list-item [routerLink]="['/profile/viewprofile']" routerLinkActive='active'><i class="fas fa-user"></i> &nbsp; My Profile</a>
+        <a mat-list-item [routerLink]="['./view']" [routerLinkActive]="['active']"><i class="fas fa-user"></i> &nbsp; My Profile</a>
         <a mat-list-item [routerLink]="['/profile/kyc']" [routerLinkActive]="['active']"><i class="fas fa-file-alt"></i> &nbsp; Kyc Document</a>    
         <a mat-list-item [routerLink]="['/profile/changepassword']" [routerLinkActive]="['active']"><i class="fas fa-unlock-alt"></i> &nbsp; Reset Password</a> 
 
@@ -17,24 +17,9 @@
         <a mat-list-item [routerLink]="['/profile/changepassword']"><i class="fas fa-unlock-alt"></i> &nbsp; Reset Password</a>  -->
       </mat-nav-list>
     </mat-sidenav>
-    <!-- [routerLink]="['home']"
-    [routerLinkActive]="['active'] -->
+
     <mat-sidenav-content>
-    <!-- <router-outlet></router-outlet> -->
+      <router-outlet></router-outlet>
 </mat-sidenav-content>
-    <!-- <mat-sidenav-content class="content" *ngIf="loadComponent==='cards'">
 
-    </mat-sidenav-content>
-
-    <mat-sidenav-content class="content" *ngIf="loadComponent==='notifications'">
-
-    </mat-sidenav-content>
-
-    <mat-sidenav-content class="content" *ngIf="loadComponent==='transferMoney'">
-        <app-transfer-money></app-transfer-money>
-    </mat-sidenav-content>
-
-    <mat-sidenav-content class="content" *ngIf="loadComponent==='policies'">
-
-    </mat-sidenav-content> -->
   </mat-sidenav-container>

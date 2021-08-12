@@ -29,33 +29,27 @@
         <mat-form-field appearance="fill">
             <mat-label>Gender</mat-label>
             <mat-select formControlName="gender">
-                <mat-option value="valid">Male</mat-option>
-                <mat-option value="valid">Female</mat-option>
-                <mat-option value="valid">Other</mat-option>
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
             </mat-select>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field appearance="fill">
-            <mat-label>Relationship</mat-label>
-            <input formControlName="relationship" matInput placeholder="Relationship">
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
             <mat-label>Pan Number</mat-label>
-            <input formControlName="pannumber" matInput placeholder="Relationship">
+            <input formControlName="pannumber" matInput placeholder="Pan Number">
         </mat-form-field>
     </p>
 
     <p>
         <mat-form-field appearance="fill">
             <mat-label>Age</mat-label>
-            <input formControlName="age" matInput placeholder="Relationship">
+            <input formControlName="age" matInput placeholder="Age">
         </mat-form-field>
     </p>
     <p>
-        <input class="ng-hide" id="input-file-id" multiple type="file" (change)="onFileSelect($event)" accept="image/*,.pdf,.doc,.docx"/>
+        <input class="ng-hide" id="input-file-id" multiple type="file" (change)="onFileSelect($event)" accept="image/*,.pdf,.doc,.docx" required/>
 <label for="input-file-id" class="md-button md-raised md-primary">Upload your Passport size photo , ID Proof</label>
     </p>
     <div class="formdiv">

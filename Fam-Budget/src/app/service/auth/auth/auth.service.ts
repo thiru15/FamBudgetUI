@@ -28,29 +28,51 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
     return this.http.post(API_URL.BASE_URL + API_URL.LOGIN,
-      {username, password},
+      {'username': username, 'password': password},
       {headers: this.headerOptions}
     );
   }
 
   signup(formDetails: any): Observable<any> {
-    return this.http.post('http://localhost:3000/dev/auth/signup',
-      {files: formDetails.value.file},
+    return this.http.post(
+      'http://localhost:3000/dev/auth/signup',
+      // API_URL.BASE_URL+API_URL.SIGNUP,
+      { 
+        firstName: formDetails.value.firstname,
+        lastName: formDetails.value.lastname,
+        gender: formDetails.value.gender,
+        mobile: formDetails.value.mobile,
+        email: formDetails.value.email,
+        bcity: 'City-ABC',
+        panNumber: formDetails.value.pannumber,
+        age: formDetails.value.age,
+        files: formDetails.value.file,
+        role: 'Primary-Account-Holder'
+    },
       {headers: this.headerOptions}
     );
   }
 
-  // forgotPassword(email): Observable<any> {
-  //   return from(Auth.forgotPassword(email));
-  // }
+  forgotPassword(username: any): Observable<any> {
+    return this.http.post(API_URL.BASE_URL + API_URL.FORGOT_PASSWORD,
+      { username: username }, 
+      {headers: this.headerOptions}
+      );
+  }
 
-  // confirmPassword(code, newPassword, email): Observable<any> {
-  //   return from(Auth.forgotPasswordSubmit(email, code, newPassword));
-  // }
+  confirmPassword(username: any,code: any, password: any ): Observable<any> {
+    return this.http.post(API_URL.BASE_URL + API_URL.CONFIRM_PASSWORD,
+      { username: username, code: code, newPassword: password }, 
+      {headers: this.headerOptions}
+      );
+  }
 
-  // resetTemporaryPassword(user, newPassword): Observable<any> {
-  //   return from(Auth.completeNewPassword(user, newPassword));
-  // }
+  resetTemporaryPassword(username: any,newPassword: any, currentPassword: any ): Observable<any> {
+    return this.http.post(API_URL.BASE_URL + API_URL.RESET_TEMPORARY,
+      { username: username, password: currentPassword, newPassword: newPassword }, 
+      {headers: this.headerOptions}
+      );
+  }
 
   logout() {
     localStorage.clear();
@@ -75,5 +97,6 @@ export class AuthService {
       {headers: this.headerOptions}
       );
   }
+
 
 }

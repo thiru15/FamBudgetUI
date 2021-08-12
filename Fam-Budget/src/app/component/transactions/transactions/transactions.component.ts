@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import jspdf, { jsPDF } from 'jspdf';
 import { first } from 'rxjs/internal/operators/first';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 
@@ -40,33 +39,6 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   name = 'Angular Html To Pdf ';
    pdfTable :any;
 
-  // @ViewChild('pdfTable', { static: false })
-  // pdfTable!: ElementRef;
-
-  public downloadAsPDF() {
-    
-    // const specialElementHandlers = {
-    //   // '#editor': function (element, renderer) {
-    //   //   return true;
-    //   // }
-    // };
-    var doc = new jsPDF();
-    let data = this.pdfTable.nativeElement;
-    this.pdfTable   =  document.getElementById("pdfTable");
-    
-  //   doc.html(data , )
-  //   console.log("PDDF ",this.pdfTable)
-    
-
-    doc.html(this.pdfTable, {
-      callback: function (doc :any) {
-      doc.save('tableToPdf.pdf');
-    },
-  });
- 
-    //doc.save('tableToPdf.pdf');
-  }
-
   ngOnInit(): void {
   }
   displayedColumns: string[] = [  "transactionID","merchant", 'description','amount', 'transactionStartedAt'];
@@ -76,14 +48,11 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-   //@ViewChild('pdfTable', { static: false }) pdfTable!: ElementRef;
-
+  
   constructor(private DashboardService: DashboardService, public fb: FormBuilder) {
     this.reactiveForm()
     this.loading = true; 
     this.getAllTransactions()
-    
-    
     // Assign the data to the data source for the table to render
   }
 
@@ -127,7 +96,7 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   onDownload(){
     console.log("Downloadedd ");
     this.downloadTransactions();
-
   }
+
 }
 

@@ -7,19 +7,26 @@ import { MyProfileComponent } from 'src/app/component/my-profile/my-profile/my-p
 import { ResetPasswordComponent } from 'src/app/component/reset-password/reset-password/reset-password.component';
 import { KycDetailsComponent } from 'src/app/component/kyc-details/kyc-details/kyc-details.component';
 import { LibrariesModule } from '../../libraries/libraries/libraries.module';
+import { RouterModule } from '@angular/router';
+// import { RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     MyProfileComponent,
     ResetPasswordComponent,
-    KycDetailsComponent
+    KycDetailsComponent,
   ],
   imports: [
     CommonModule,
     ProfileRoutingModule,
     LibrariesModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule
+  ],
+  exports:[
+    RouterModule,
+    LibrariesModule
   ]
 })
 export class ProfileModule { }

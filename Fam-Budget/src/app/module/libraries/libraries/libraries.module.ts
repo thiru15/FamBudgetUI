@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatListModule} from '@angular/material/list';
 import { LibrariesRoutingModule } from './libraries-routing.module';
 import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatFormFieldModule, MatLabel } from "@angular/material/form-field";
 import {MatTabsModule} from '@angular/material/tabs'
 import {MatMenuModule} from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
@@ -78,7 +78,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatGridListModule,
     MatDialogModule,
     ChartsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+   
   ]
 })
 export class LibrariesModule { }

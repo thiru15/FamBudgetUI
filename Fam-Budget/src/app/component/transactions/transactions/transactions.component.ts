@@ -5,7 +5,7 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { first } from 'rxjs/internal/operators/first';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 export interface TransactionData {
   transactionID: string;
   merchant: any;
@@ -40,6 +40,7 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
    pdfTable :any;
 
   ngOnInit(): void {
+    this.spinner.show();
   }
   displayedColumns: string[] = [  "transactionID","merchant", 'description','amount', 'transactionStartedAt'];
   dataSource!: MatTableDataSource<TransactionData>;
@@ -49,9 +50,10 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   
-  constructor(private DashboardService: DashboardService, public fb: FormBuilder) {
+  constructor(private DashboardService: DashboardService, public fb: FormBuilder,private spinner: NgxSpinnerService,) {
     this.reactiveForm()
     this.loading = true; 
+    
     this.getAllTransactions()
     // Assign the data to the data source for the table to render
   }
@@ -71,6 +73,8 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   }
 
    getAllTransactions() {
+
+    
     
     
     return this.DashboardService.getTransactions(111, 1, this.myForm).pipe(first()).subscribe( (data) => {
@@ -79,6 +83,7 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false;
+      this.spinner.hide();
 
     })
   }

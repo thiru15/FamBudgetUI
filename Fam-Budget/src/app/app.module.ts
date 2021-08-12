@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 //import { FormModalComponent } from './component/secondary-users/form-modal/form-modal.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +22,16 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxSpinnerModule
     // FlexLayoutModule
   ],
   exports:[
-ReactiveFormsModule
+ReactiveFormsModule,
+NgxSpinnerModule
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
   providers: [],
   bootstrap: [AppComponent]
 })

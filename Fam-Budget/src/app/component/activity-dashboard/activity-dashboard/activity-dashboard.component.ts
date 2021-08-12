@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChartColor, ChartOptions, ChartType ,ChartDataSets} from 'chart.js';
 import { Color, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, MultiDataSet, SingleDataSet } from 'ng2-charts';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-activity-dashboard',
@@ -15,7 +16,7 @@ export class ActivityDashboardComponent implements OnInit {
   secondaryUsers: any[] = [];
   balance: any;
   yearlyTransactions: any[] = [];
-  constructor(private dashboardService: DashboardService) { 
+  constructor(private dashboardService: DashboardService,private spinner: NgxSpinnerService,) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
     this.getAllUserBalance()
@@ -25,6 +26,7 @@ export class ActivityDashboardComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    this.spinner.show();
     
   }
   colors = [ '#367588','#002244', '#132257' ,'#0C2340','#B0A6A4','#8B5A00','#8B814C','#008080','#00688B','#754C78','#8B5F65']
@@ -127,6 +129,7 @@ export class ActivityDashboardComponent implements OnInit {
           this.barChartData[0].data?.push(data[key])
         }
       }
+      this.spinner.hide();
     })
   }
 

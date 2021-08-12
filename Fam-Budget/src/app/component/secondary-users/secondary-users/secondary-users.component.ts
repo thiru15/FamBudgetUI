@@ -5,6 +5,8 @@ import { FormModalComponent } from '../form-modal/form-modal.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { PolicyComponent } from '../../policy/policy.component';
 import { first } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -39,13 +41,14 @@ export class SecondaryUsersComponent implements OnInit {
   avatarColors: any[] = ["#ffafbd", "#ffc3a0", "#753a88", "#ee9ca7", "#42275a", "#de6262", "#004e92"]
   policyPresent = false
 
-  constructor(private dialog: MatDialog, private dashboardService: DashboardService, private cdref: ChangeDetectorRef) {
+  constructor(private dialog: MatDialog, private dashboardService: DashboardService, private cdref: ChangeDetectorRef,private spinner: NgxSpinnerService,) {
     this.getPolicy()
     this.getSecondarUsers()
   }
 
   ngOnInit(): void {
     this.active = true
+    this.spinner.show();
   }
 
 openDialog() {
@@ -71,6 +74,7 @@ getSecondarUsers(){
         this.secondaryUsers[ind]["avatarColor"] = this.avatarColors[ind%7]
         console.log(this.secondaryUsers[ind]["avatarColor"])
     }
+    this.spinner.hide()
   })
 }
 

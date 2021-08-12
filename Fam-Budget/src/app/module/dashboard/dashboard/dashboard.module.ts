@@ -14,6 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { CardComponent } from 'src/app/component/card/card/card.component';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from 'src/app/component/signup/signup/signup.component';
+import { PolicyComponent } from 'src/app/component/policy/policy.component';
 @NgModule({
   declarations: [    
     DashboardComponent,
@@ -25,6 +26,7 @@ import { SignupComponent } from 'src/app/component/signup/signup/signup.componen
     ActivityDashboardComponent,
     CardComponent,
     FormModalComponent,
+    PolicyComponent
     //CardComponent
   ],
   imports: [

@@ -5,30 +5,6 @@
         
     </button>
     </div>
-<!-- <div class="content">
-    <div fxLayout="row wrap" fxLayoutGap="16px grid"       
-          class="flex-container"
-         >
-         [{"secondaryId":234,"accountNumber":111,"firstName":"ram","lastName":"kumar","email":"t@gmail.com","mobile":"99458923","gender":"Male","relationship":"frand","isKycVerified":true,"bcity":"Chennai","panNumber":"gh12","isActive":true,"createdAt":"2021-08-09T19:43:45.000Z","updatedAt":"2021-08-09T19:43:45.000Z","isMinor":false,"fundsAllocated":1000,"fundsSpent":0}]
-        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" fxFlex.xl="20%" *ngFor="let user of secondaryUsers">
-            <mat-card class="mat-elevation-z4 movie-card">
-                <mat-card-header>
-                    <ngx-avatar mat-card-avatar name="{{user.firstName}} {{user.lastName}}" bgColor="#0F2027" size=30 class="example-header-image"></ngx-avatar>
-                  <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
-                  <mat-card-subtitle>{{ user.relationship}}</mat-card-subtitle>
-
-
-                </mat-card-header>
-                <mat-card-content>
-                  <p>
-                      
-                  </p>
-
-                </mat-card-content>
-            </mat-card>
-        </div>
-      </div>
-  </div> -->
   <div class="secondary">
   <mat-card class="profile-card" *ngFor="let user of secondaryUsers">
   
@@ -38,12 +14,6 @@
          <ngx-avatar [name]="user.firstName+' '+user.lastName" [bgColor]="user.avatarColor" size=45></ngx-avatar>
       </mat-card-header>
   
-      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
-  <!-- 
-      <button mat-icon-button mat-card-image> -->
-        <!-- <ngx-avatar name="Ted Mosby" bgColor="#0F2027" size=60></ngx-avatar> -->
-        <!-- <mat-icon class="profile-icon" style="color: black;">view_headline</mat-icon> -->
-      <!-- </button> -->
   
       <mat-card-content>
           <div class="balance">
@@ -68,12 +38,13 @@
 
       </mat-card-content>
        <mat-card-actions >
-        <button mat-button *ngIf="active" class="bg-active" (click)="activate()">Active</button>
-        <button mat-button *ngIf="!active" class="bg-disable" (click)="activate()" >Disabled</button>
+        <button mat-button *ngIf="user.isActive" class="bg-active" (click)="[activate(user.secondaryId,user.isActive), user.isActive=false]" >Active</button>
+        <button mat-button *ngIf="!user.isActive" class="bg-disable" (click)="[activate(user.secondaryId, user.isActive), user.isActive=true]" >Disabled</button>
+<ng-container *ngIf="gotPolicies==true">
+  <button mat-button *ngIf="!policies.hasOwnProperty(user.secondaryId+'')" class="policy" (click)="openAddPolicy(user.secondaryId, user.firstName)">Add Policy</button>
+  <button mat-button *ngIf="policies.hasOwnProperty(user.secondaryId+'')"  class="policy" (click)="openEditPolicy(user.secondaryId, user.firstName)">Edit Policy</button>
+</ng-container>
       </mat-card-actions>
-      
-
-      
     </mat-card>
 </div>
 </div>

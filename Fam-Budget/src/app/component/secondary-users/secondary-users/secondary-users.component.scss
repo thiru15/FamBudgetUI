@@ -24,14 +24,18 @@
     height: 100%;
     box-sizing: border-box;
 }
-.mat-raised-button{
-  background-color: #242222;
-  padding: 0.1em 0.3em;
-  line-height: normal;
-  min-width: 0;
-  color: aliceblue;
-  font-size: 0.7em;
-  margin: 0px 1.5px;
+.mat-button{
+  // background-color: #242222;
+  // padding: 0.1em 0.3em;
+  // min-width: 0;
+  // color: aliceblue;
+  // font-size: 0.7em;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 8px;
+  width: fit-content;
+  color: #000075;
+  background: rgba(138, 133, 133,0.1);
 }
 .mat-card-header{
   justify-content: space-between;

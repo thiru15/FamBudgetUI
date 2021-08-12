@@ -1,61 +1,66 @@
 <div class="add_user_form">
-    <form [formGroup]="myForm"  (ngSubmit)="submitForm()" novalidate>
-    <h3>CREATE NEW ACCOUNT</h3>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>First Name</mat-label>
-            <input formControlName="firstname" matInput placeholder="First Name">
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Last Name</mat-label>
-            <input formControlName="lastname" matInput placeholder="Last Name">
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input formControlName="email" matInput placeholder="Email">
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Mobile</mat-label>
-            <input formControlName="mobile" matInput placeholder="Mobile">
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Gender</mat-label>
-            <mat-select formControlName="gender">
-                <mat-option value="Male">Male</mat-option>
-                <mat-option value="Female">Female</mat-option>
-                <mat-option value="Other">Other</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Pan Number</mat-label>
-            <input formControlName="pannumber" matInput placeholder="Pan Number">
-        </mat-form-field>
-    </p>
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <div class="button-div">
+            <button [routerLink]="['/']"><mat-icon>cancel</mat-icon></button>
+        </div>
+        <h3>CREATE NEW ACCOUNT</h3>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input formControlName="firstname" matInput placeholder="First Name">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input formControlName="lastname" matInput placeholder="Last Name">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput placeholder="Email">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Mobile</mat-label>
+                <input formControlName="mobile" matInput placeholder="Mobile">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option value="Male">Male</mat-option>
+                    <mat-option value="Female">Female</mat-option>
+                    <mat-option value="Other">Other</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Pan Number</mat-label>
+                <input formControlName="pannumber" matInput placeholder="Pan Number">
+            </mat-form-field>
+        </p>
 
-    <p>
-        <mat-form-field appearance="fill">
-            <mat-label>Age</mat-label>
-            <input formControlName="age" matInput placeholder="Age">
-        </mat-form-field>
-    </p>
-    <p>
-        <input class="ng-hide" id="input-file-id" multiple type="file" (change)="onFileSelect($event)" accept="image/*,.pdf,.doc,.docx" required/>
-<label for="input-file-id" class="md-button md-raised md-primary">Upload your Passport size photo , ID Proof</label>
-    </p>
-    <div class="formdiv">
-        <button mat-raised-button color="primary" [disabled]="myForm.invalid">Submit</button>
-    </div>
-</form>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Age</mat-label>
+                <input formControlName="age" matInput placeholder="Age">
+            </mat-form-field>
+        </p>
+        <p>
+            <input required="true" class="ng-hide" id="input-file-id" multiple type="file"
+                (change)="onFileSelect($event)" accept="image/*,.pdf,.doc,.docx" />
+            <label for="input-file-id" class="md-button md-raised md-primary">Upload your Passport size photo and ID
+                Proof</label>
+        </p>
+        <div class="formdiv">
+            <button mat-raised-button color="primary" [disabled]="myForm.invalid">Submit</button>
+        </div>
+    </form>
 </div>
 <!-- <mat-card class="login-card"> 
     <mat-card-title>Login</mat-card-title>

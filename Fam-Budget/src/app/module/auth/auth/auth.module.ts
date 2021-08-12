@@ -6,6 +6,7 @@ import { SignupComponent } from 'src/app/component/signup/signup/signup.componen
 import { LoginComponent } from 'src/app/component/login/login.component';
 import { LibrariesModule } from '../../libraries/libraries/libraries.module';
 import { ForgotPasswordComponent } from 'src/app/component/forgot-password/forgot-password.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ForgotPasswordComponent } from 'src/app/component/forgot-password/forgo
     CommonModule,
     AuthRoutingModule,
     LibrariesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class AuthModule { }

@@ -39,8 +39,7 @@ export class LoginComponent implements OnInit {
   submit(){
     console.log(this.form.value)
     this.authService.login(this.form.value.username, this.form.value.password).pipe(first()).subscribe( (data) => {
-      console.log(data)
-      if(data.accessToken){
+      if(data.success == true){
         setUser(data)
         this.toastr.success('you have successfully logged in', "Success!")
         this.router.navigate(['/dashboard'])
@@ -65,9 +64,9 @@ export class LoginComponent implements OnInit {
         this.toastr.success("Password reset success", "Success!")
         this.router.navigate(['./'])
       }
-      // else{
-      //   // show toaster
-      // }
+      else{
+        this.router.navigate(['./'])
+      }
     }, (error) => {
       console.log("error in login", error)
       this.toastr.error("Couldn't reset temporary password","Error!" )

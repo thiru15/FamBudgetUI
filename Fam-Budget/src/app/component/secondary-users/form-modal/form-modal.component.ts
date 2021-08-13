@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 import { MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { first } from 'rxjs/operators';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
+import { USER_DATA } from 'src/app/util/auth.util';
 import { DialogData } from '../secondary-users/secondary-users.component';
 
 @Component({
@@ -48,7 +49,7 @@ export class FormModalComponent implements OnInit {
   }
 
   createSecondaryUser(){
-    this.dashboardService.createSecondaryUser(111, this.myForm).pipe(first()).subscribe( (data) => {
+    this.dashboardService.createSecondaryUser(USER_DATA.accountNumber, this.myForm).pipe(first()).subscribe( (data) => {
       console.log("ddd",data);
     })
   }

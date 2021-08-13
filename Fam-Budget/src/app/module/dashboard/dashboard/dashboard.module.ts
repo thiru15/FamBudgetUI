@@ -15,6 +15,9 @@ import { CardComponent } from 'src/app/component/card/card/card.component';
 import { RouterModule } from '@angular/router';
 import { SignupComponent } from 'src/app/component/signup/signup/signup.component';
 import { PolicyComponent } from 'src/app/component/policy/policy.component';
+//import { NgxSpinner } from 'ngx-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [    
     DashboardComponent,
@@ -34,10 +37,15 @@ import { PolicyComponent } from 'src/app/component/policy/policy.component';
     DashboardRoutingModule,
     LibrariesModule,
     FlexLayoutModule,
-    RouterModule
+    RouterModule,
+    NgxSpinnerModule
+    
+   
   ],
   exports: [
-    RouterModule
+    RouterModule,
+    NgxSpinnerModule
+   
   ]
 })
 export class DashboardModule { }

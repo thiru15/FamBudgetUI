@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
+import { getUserDetails, USER_DATA } from 'src/app/util/auth.util';
 
 @Component({
   selector: 'app-card',
@@ -10,6 +11,7 @@ import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 export class CardComponent implements OnInit {
 
   constructor(private dashboardService: DashboardService) { 
+    const userDetails = getUserDetails()
     this.getCards()
   }
   cards: any
@@ -17,7 +19,7 @@ export class CardComponent implements OnInit {
   }
 
   getCards(){
-    this.dashboardService.getCards(111, 1, "", false).pipe(first()).subscribe( (data) => {
+    this.dashboardService.getCards(USER_DATA.accountNumber, USER_DATA.userId, "", false).pipe(first()).subscribe( (data) => {
       this.cards = data
     })
   }

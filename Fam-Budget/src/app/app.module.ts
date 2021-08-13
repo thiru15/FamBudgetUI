@@ -7,6 +7,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+//import { FormModalComponent } from './component/secondary-users/form-modal/form-modal.component';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ CUSTOM_ELEMENTS_SCHEMA
     HttpClientModule,
     // FlexLayoutModule,
     ToastrModule.forRoot({
-      timeOut: 30000,
+      timeOut: 4000,
       // positionClass: 'toast-bottom-right',
       preventDuplicates: true,
       maxOpened: 3,

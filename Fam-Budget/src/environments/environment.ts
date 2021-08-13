@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   userPool: "",
-  client: 'us-east-1_FoYGRgTyX',
-  appClientId: '3egu3j5t1dck447tl9n0d812cf',
+  client: 'us-east-1_T5LbTSghE',
+  appClientId: '4c0un0u1ir3pc2koqlp7ibq4r1',
   
   primaryUserGroup: "primary-account-holder",
   secondaryUserGroup: "seondary-account-holder"

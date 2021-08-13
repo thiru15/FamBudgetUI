@@ -5,6 +5,7 @@ export const LOCAL_STORAGE = {
     REFRESH_TOKEN: 'FAM_BUDGET_REFRESH_TOKEN',
     IDENTITY_TOKEN: 'FAM_BUDGET_IDENTITY_TOKEN',
     ROLE: 'FAM_BUDGET_ROLE',
+    ID: 'FAM_BUDGET_ID'
 };
 
 export const ROLE = {
@@ -12,20 +13,28 @@ export const ROLE = {
     SECONDARY_USER: 'SECONDARY_USER',
 };
 
-
-export function setUser(data: { idToken: string; accessToken: string }) {
+export let USER_DATA = {
+    email:  '',
+    name:  '',
+    accountNumber: '',
+    userId: ''
+}
+export function setUser(data: { idToken: string; accessToken: string; accountNumber: any }) {
     localStorage.setItem(LOCAL_STORAGE.IDENTITY_TOKEN, data.idToken);
     localStorage.setItem(LOCAL_STORAGE.ACCESS_TOKEN, data.accessToken);
+    localStorage.setItem(LOCAL_STORAGE.ID, data.accountNumber)
     // localStorage.setItem(LOCAL_STORAGE.REFRESH_TOKEN, data.refreshToken);
     const payLoad = data.accessToken.split('.')[1];
     let group = JSON.parse(base64Decode(payLoad))['cognito:groups'].toString();
 
-    console.log(group)
     if (group.includes(environment.primaryUserGroup)) {
         localStorage.setItem(LOCAL_STORAGE.ROLE, ROLE.PRIMARY_USER);
     } else if (group.includes(environment.secondaryUserGroup)) {
         localStorage.setItem(LOCAL_STORAGE.ROLE, ROLE.SECONDARY_USER);
     }
+
+    getUserDetails()
+    return 
 }
 
 function getIdToken() {
@@ -36,17 +45,15 @@ function getAccessToken() {
     return localStorage.getItem(LOCAL_STORAGE.ACCESS_TOKEN)
 }
 
-export function getUserDetails(): any {
+export function getUserDetails(): void {
     const IdToken = getIdToken();
     const payLoad = IdToken!.split('.')[1];
-    console.log(JSON.parse(payLoad))
-    const userData = JSON.parse(payLoad);
-    const user = {
-        email: userData.email || '',
-        name: userData.name || ''
-    };
-    console.log(user)
-    return  user;
+    const userData = JSON.parse(base64Decode(payLoad));
+
+    USER_DATA.accountNumber = localStorage.getItem(LOCAL_STORAGE.ID)!
+    USER_DATA.email = userData.email || ''
+    USER_DATA.name = userData.name || ''
+    USER_DATA.userId = userData["cognito:username"]
 }
 
 export function isPrimaryUser() {

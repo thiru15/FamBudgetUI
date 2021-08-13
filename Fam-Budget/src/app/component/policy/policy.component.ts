@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
+import { USER_DATA } from 'src/app/util/auth.util';
 
 @Component({
   selector: 'app-policy',
@@ -39,7 +40,7 @@ export class PolicyComponent implements OnInit {
   submitPolicyForm(){
     console.log(this.policyForm.value)
     const expiry = (this.policyConstraint == 'no-expiry')? '': this.policyForm.value.expiryPeriod
-    this.dashboardService.createPolicy(1, 111, true, this.secondaryId,expiry, this.policyForm.value.spendLimit)
+    this.dashboardService.createPolicy(USER_DATA.userId, USER_DATA.accountNumber, true, this.secondaryId,expiry, this.policyForm.value.spendLimit)
             .subscribe( (data) => {
               console.log(data)
             })
@@ -48,7 +49,7 @@ export class PolicyComponent implements OnInit {
   submitEditPolicyForm(){
     console.log(this.editPolicyForm.value)
     const expiry = (this.policyConstraint == 'no-expiry')? '': this.editPolicyForm.value.expiryPeriod
-    this.dashboardService.updatePolicy(111, this.policyId, 1, expiry, this.editPolicyForm.value.spendLimit)
+    this.dashboardService.updatePolicy(USER_DATA.accountNumber, this.policyId, USER_DATA.userId, expiry, this.editPolicyForm.value.spendLimit)
     .subscribe( (data) => {
       console.log(data)
     })

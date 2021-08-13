@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ChartColor, ChartOptions, ChartType ,ChartDataSets} from 'chart.js';
 import { Color, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, MultiDataSet, SingleDataSet } from 'ng2-charts';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { getUserDetails, USER_DATA } from 'src/app/util/auth.util';
 
 @Component({
   selector: 'app-activity-dashboard',
@@ -15,7 +17,7 @@ export class ActivityDashboardComponent implements OnInit {
   secondaryUsers: any[] = [];
   balance: any;
   yearlyTransactions: any[] = [];
-  constructor(private dashboardService: DashboardService) { 
+  constructor(private dashboardService: DashboardService,private spinner: NgxSpinnerService,) { 
     monkeyPatchChartJsTooltip();
     monkeyPatchChartJsLegend();
     this.getAllUserBalance()
@@ -25,6 +27,8 @@ export class ActivityDashboardComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    this.spinner.show();
+    
   }
 
   colors = [ '#367588','#002244', '#132257' ,'#0C2340','#B0A6A4','#8B5A00','#8B814C','#008080','#00688B','#754C78','#8B5F65']
@@ -92,7 +96,7 @@ export class ActivityDashboardComponent implements OnInit {
   ];
 
   getAllUserBalance(){
-    this.dashboardService.getBalance(111, 1, '').subscribe( (data) => {
+    this.dashboardService.getBalance(USER_DATA.accountNumber, USER_DATA.userId, '').subscribe( (data) => {
       console.log(data)
       this.secondaryUsers = data.secondaryaccounts
       
@@ -109,14 +113,14 @@ export class ActivityDashboardComponent implements OnInit {
   }
 
   getRecentTransactions(){
-    this.dashboardService.getRecentTransactions(111).subscribe((data) => {
+    this.dashboardService.getRecentTransactions(USER_DATA.accountNumber).subscribe((data) => {
       console.log(data)
       this.recentTransactions = data
     })
   }
   
   getYearlyTransactions(){
-    this.dashboardService.getYearlyTransactions(111, null).subscribe((data) => {
+    this.dashboardService.getYearlyTransactions(USER_DATA.accountNumber, null).subscribe((data) => {
       console.log(data)
       for(let ind=0; ind<12; ind+=1){
         let key: any = this.barChartLabels[ind]
@@ -127,6 +131,7 @@ export class ActivityDashboardComponent implements OnInit {
           this.barChartData[0].data?.push(data[key])
         }
       }
+      this.spinner.hide();
     })
   }
 }

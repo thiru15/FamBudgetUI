@@ -5,6 +5,9 @@ import { FormModalComponent } from '../form-modal/form-modal.component';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { PolicyComponent } from '../../policy/policy.component';
 import { first } from 'rxjs/operators';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { USER_DATA } from 'src/app/util/auth.util';
+
 
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
@@ -39,13 +42,14 @@ export class SecondaryUsersComponent implements OnInit {
   avatarColors: any[] = ["#ffafbd", "#ffc3a0", "#753a88", "#ee9ca7", "#42275a", "#de6262", "#004e92"]
   policyPresent = false
 
-  constructor(private dialog: MatDialog, private dashboardService: DashboardService, private cdref: ChangeDetectorRef) {
+  constructor(private dialog: MatDialog, private dashboardService: DashboardService, private cdref: ChangeDetectorRef,private spinner: NgxSpinnerService,) {
     this.getPolicy()
     this.getSecondarUsers()
   }
 
   ngOnInit(): void {
     this.active = true
+    this.spinner.show();
   }
 
 openDialog() {
@@ -64,18 +68,19 @@ activate(secondaryId: number, isActive: boolean ) {
 // }
   
 getSecondarUsers(){
-  this.dashboardService.getSecondaryUsers(111).subscribe( (data) => {
+  this.dashboardService.getSecondaryUsers(USER_DATA.accountNumber).subscribe( (data) => {
     this.secondaryUsers = data
     console.log(this.secondaryUsers)
     for(let ind=0; ind<this.secondaryUsers.length; ind+=1){
         this.secondaryUsers[ind]["avatarColor"] = this.avatarColors[ind%7]
         console.log(this.secondaryUsers[ind]["avatarColor"])
     }
+    this.spinner.hide()
   })
 }
 
 getPolicy(){
-  return this.dashboardService.getPolicies(111, 1).subscribe( (data) => {
+  return this.dashboardService.getPolicies(USER_DATA.accountNumber, USER_DATA.userId).subscribe( (data) => {
       // console.log(data)
       this.policies = data
       this.gotPolicies = true

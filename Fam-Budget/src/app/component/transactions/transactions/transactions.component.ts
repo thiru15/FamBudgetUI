@@ -5,7 +5,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { first } from 'rxjs/internal/operators/first';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { USER_DATA } from 'src/app/util/auth.util';
 export interface TransactionData {
   transactionID: string;
   merchant: any;
@@ -40,6 +41,7 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
    pdfTable :any;
 
   ngOnInit(): void {
+    this.spinner.show();
   }
   displayedColumns: string[] = [  "transactionID","merchant", 'description','amount', 'transactionStartedAt'];
   dataSource!: MatTableDataSource<TransactionData>;
@@ -49,9 +51,10 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   
-  constructor(private DashboardService: DashboardService, public fb: FormBuilder) {
+  constructor(private DashboardService: DashboardService, public fb: FormBuilder,private spinner: NgxSpinnerService,) {
     this.reactiveForm()
     this.loading = true; 
+    
     this.getAllTransactions()
     // Assign the data to the data source for the table to render
   }
@@ -71,19 +74,22 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
   }
 
    getAllTransactions() {
+
     
     
-    return this.DashboardService.getTransactions(111, 1, this.myForm).pipe(first()).subscribe( (data) => {
+    
+    return this.DashboardService.getTransactions(USER_DATA.accountNumber, USER_DATA.userId, this.myForm).pipe(first()).subscribe( (data) => {
       this.data = data
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false;
+      this.spinner.hide();
 
     })
   }
   downloadTransactions(){
-    return this.DashboardService.downloadTransactions(111, 1, undefined).pipe(first()).subscribe( (data) => {
+    return this.DashboardService.downloadTransactions(USER_DATA.accountNumber, USER_DATA.userId, undefined).pipe(first()).subscribe( (data) => {
       console.log("data ",data);
       window.open(data);
     })

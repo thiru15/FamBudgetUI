@@ -6,6 +6,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { first } from 'rxjs/internal/operators/first';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { USER_DATA } from 'src/app/util/auth.util';
 export interface TransactionData {
   transactionID: string;
   merchant: any;
@@ -77,7 +78,7 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
     
     
     
-    return this.DashboardService.getTransactions(111, 1, this.myForm).pipe(first()).subscribe( (data) => {
+    return this.DashboardService.getTransactions(USER_DATA.accountNumber, USER_DATA.userId, this.myForm).pipe(first()).subscribe( (data) => {
       this.data = data
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;
@@ -88,7 +89,7 @@ export class TransactionsComponent implements OnInit,AfterViewInit {
     })
   }
   downloadTransactions(){
-    return this.DashboardService.downloadTransactions(111, 1, undefined).pipe(first()).subscribe( (data) => {
+    return this.DashboardService.downloadTransactions(USER_DATA.accountNumber, USER_DATA.userId, undefined).pipe(first()).subscribe( (data) => {
       console.log("data ",data);
       window.open(data);
     })

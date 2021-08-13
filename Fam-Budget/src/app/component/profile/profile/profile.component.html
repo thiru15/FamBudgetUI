@@ -1,26 +1,28 @@
 <mat-sidenav-container class="container">
-    <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true" >
-      <mat-toolbar>Menu</mat-toolbar>
-      <mat-nav-list>
-        <!-- <a mat-list-item (click)="navContentChange('cards')"><i class="fas fa-credit-card" ></i>  &nbsp; Cards</a>
-        <a mat-list-item (click)="navContentChange('notifications')"><i class="fas fa-bell" ></i> &nbsp; Notifications</a>
-        <a mat-list-item (click)="navContentChange('balance')"><i class="fas fa-balance-scale" ></i> &nbsp; Balance</a>
-        <a mat-list-item (click)="navContentChange('policies')"><i class="far fa-id-badge" ></i> &nbsp; Policies</a>
-        <a mat-list-item (click)="navContentChange('transferMoney')"> <i class="fas fa-money-check"></i>&nbsp; Transfer Money</a> -->
+  <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
 
-        <a mat-list-item [routerLink]="['./view']" [routerLinkActive]="['active']"><i class="fas fa-user"></i> &nbsp; My Profile</a>
-        <a mat-list-item [routerLink]="['/profile/kyc']" [routerLinkActive]="['active']"><i class="fas fa-file-alt"></i> &nbsp; Kyc Document</a>    
-        <a mat-list-item [routerLink]="['/profile/changepassword']" [routerLinkActive]="['active']"><i class="fas fa-unlock-alt"></i> &nbsp; Reset Password</a> 
+      <a mat-list-item [routerLink]="['./view']" [routerLinkActive]="['active']"><i class="fas fa-user"></i> &nbsp; My
+        Profile</a>
+      <a mat-list-item [routerLink]="['/profile/kyc']" [routerLinkActive]="['active']"><i class="fas fa-file-alt"></i>
+        &nbsp; Kyc Document</a>
+      <a mat-list-item [routerLink]="['/profile/changepassword']" [routerLinkActive]="['active']"><i
+          class="fas fa-unlock-alt"></i> &nbsp; Reset Password</a>
 
-        <!-- <a mat-list-item (click)="navContentChange('/viewprofile')"><i class="fas fa-user"></i> &nbsp; My Profile</a>
-        <a mat-list-item [routerLink]="['/profile/kyc']"><i class="fas fa-file-alt"></i> &nbsp; Kyc Document</a>    
-        <a mat-list-item [routerLink]="['/profile/changepassword']"><i class="fas fa-unlock-alt"></i> &nbsp; Reset Password</a>  -->
-      </mat-nav-list>
-    </mat-sidenav>
+    </mat-nav-list>
+    <button mat-flat-button>
+      <a href="http://localhost:4200/dashboard" class="home-link">
+        <i class="fas fa-home"></i> &nbsp;
+        <span>Home</span>
+      </a>
+    </button>
 
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-</mat-sidenav-content>
+  </mat-sidenav>
 
-  </mat-sidenav-container>
-  <ngx-spinner></ngx-spinner>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+<ngx-spinner></ngx-spinner>

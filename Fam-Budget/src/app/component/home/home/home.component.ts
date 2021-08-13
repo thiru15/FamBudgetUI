@@ -3,6 +3,7 @@ import { ViewChild, ViewContainerRef } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { getUserDetails } from 'src/app/util/auth.util';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -12,7 +13,9 @@ export class HomeComponent implements OnInit {
   
   
   loadComponent = 'activityDashboard'
-  constructor(private cdref: ChangeDetectorRef) { }
+  constructor(private cdref: ChangeDetectorRef) { 
+    const userDetails = getUserDetails()
+  }
 
   ngOnInit(): void {
   }

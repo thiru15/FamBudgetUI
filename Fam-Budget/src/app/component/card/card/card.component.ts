@@ -4,6 +4,7 @@ import { first } from 'rxjs/operators';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 import { ReportsComponent } from '../../reports/reports/reports.component';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { getUserDetails, USER_DATA } from 'src/app/util/auth.util';
 
 @Component({
   selector: 'app-card',
@@ -13,6 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class CardComponent implements OnInit {
 
   constructor(private dialog: MatDialog,private dashboardService: DashboardService,private spinner: NgxSpinnerService,) { 
+    const userDetails = getUserDetails()
     this.getCards()
     this.spinner.show();
   }
@@ -22,7 +24,7 @@ export class CardComponent implements OnInit {
   }
 
   getCards(){
-    this.dashboardService.getCards(111, 1, "", false).pipe(first()).subscribe( (data) => {
+    this.dashboardService.getCards(USER_DATA.accountNumber, USER_DATA.userId, "", false).pipe(first()).subscribe( (data) => {
       this.cards = data
     })
     console.log("Hei");

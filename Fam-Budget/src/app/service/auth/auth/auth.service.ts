@@ -47,7 +47,7 @@ export class AuthService {
         panNumber: formDetails.value.pannumber,
         age: formDetails.value.age,
         files: formDetails.value.file,
-        role: 'Primary-Account-Holder'
+        role: 'primary-account-holder'
     },
       {headers: this.headerOptions}
     );
@@ -68,7 +68,8 @@ export class AuthService {
   }
 
   resetTemporaryPassword(username: any,newPassword: any, currentPassword: any ): Observable<any> {
-    return this.http.post(API_URL.BASE_URL + API_URL.RESET_TEMPORARY,
+    return this.http.post(
+      API_URL.BASE_URL + API_URL.RESET_TEMPORARY,
       { username: username, password: currentPassword, newPassword: newPassword }, 
       {headers: this.headerOptions}
       );

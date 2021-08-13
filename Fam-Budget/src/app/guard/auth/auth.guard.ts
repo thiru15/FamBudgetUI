@@ -49,28 +49,14 @@ export class AuthenticatedGuardService implements CanActivate {
   }
 }
 
-// @Injectable({
-//   providedIn: 'root',
-// })
-// export class LoginGuardService implements CanActivate {
-//   constructor(private router: Router, private authService: AuthService) {}
-//   canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-//     return this.authService.getCurrentUserSession().then((currentUserSession) => {
-//       if (!currentUserSession) {
-//         // Return true if user is not authenticated
-//         return true;
-//       }
-//       const userGroups: string[] = currentUserSession.getIdToken().payload['cognito:groups'];
-//       // if (userGroups.includes(environment.adminGroupName)) {
-//       //   // Redirect to Employee Dashboard page if authenticated user belongs to Employee User Group
-//       //   return this.router.navigate(['dashboard/reports']);
-//       // }
-
-//       // if (userGroups.includes(environment.userGroupName)) {
-//       //   // Redirect to Admin Dashboard page if authenticated user belongs to Admin User Group
-//       //   return this.router.navigate(['dashboard/interviews']);
-//       // }
-//       return true;
-//     }); 
-//   }
-// }
+@Injectable({
+  providedIn: 'root',
+})
+export class LoginGuardService implements CanActivate {
+  constructor(private router: Router, private authService: AuthService) {}
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if (isAuthenticated()){
+      return true;
+    }  return false;
+  }
+}

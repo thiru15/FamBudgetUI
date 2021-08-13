@@ -14,9 +14,10 @@
   margin: 0% !important;
 }
 .flex-container{
-  max-height: 47vh;
+  max-height: 34vh;
   overflow-y: scroll;
   margin-left: 3% !important;
+  margin-bottom: 10px;
 }
 .prof-card{
     margin-bottom: 16px;
@@ -25,21 +26,12 @@
         transform: scale(1.01);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
       }
-      // height: 100%;
-      // width: 100;
+
       box-sizing: border-box;
   }
-  // .mat-card-header{
-  //   height: 30px;
-  // }
-  // .mat-card-title{
-  //   font-size: 0.8em;
-  //   font-weight: 800;
-  // }
-  
 
 .wrapper{
-    height: 94vh;
+    height: 90vh;
     width: 80vw;
     display: grid;
     // margin-left: 1%;
@@ -68,8 +60,6 @@
 .container{
   margin-left:5%;
   margin-right:5%;
-  // margin-top:7%;
-  // margin-bottom: 10%;
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 20px;
 

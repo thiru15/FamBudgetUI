@@ -4,17 +4,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-//import { FormModalComponent } from './component/secondary-users/form-modal/form-modal.component';
-import { NgxSpinnerModule } from 'ngx-spinner';
-// import { FlexLayoutModule } from '@angular/flex-layout';
-import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+//import { FormModalComponent } from './component/secondary-users/form-modal/form-modal.component';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     //FormModalComponent,
+  ],
+  schemas:[
+CUSTOM_ELEMENTS_SCHEMA
   ],
   imports: [
     BrowserModule,
@@ -22,16 +24,19 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxSpinnerModule
-    // FlexLayoutModule
+    // FlexLayoutModule,
+    ToastrModule.forRoot({
+      timeOut: 4000,
+      // positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      maxOpened: 3,
+      closeButton: true
+    }),
   ],
   exports:[
 ReactiveFormsModule,
-NgxSpinnerModule
+ToastrModule
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-],
   providers: [],
   bootstrap: [AppComponent]
 })

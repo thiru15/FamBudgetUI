@@ -3,6 +3,7 @@ import { ChartColor, ChartOptions, ChartType ,ChartDataSets} from 'chart.js';
 import { Color, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, MultiDataSet, SingleDataSet } from 'ng2-charts';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { getUserDetails, USER_DATA } from 'src/app/util/auth.util';
 
 @Component({
   selector: 'app-activity-dashboard',
@@ -29,6 +30,7 @@ export class ActivityDashboardComponent implements OnInit {
     this.spinner.show();
     
   }
+
   colors = [ '#367588','#002244', '#132257' ,'#0C2340','#B0A6A4','#8B5A00','#8B814C','#008080','#00688B','#754C78','#8B5F65']
   public usersChartLabels: Label[] = [ ['Funds Allocated'], ['Money Spent']];
   // public usersChartData: MultiDataSet = [[]];
@@ -94,7 +96,7 @@ export class ActivityDashboardComponent implements OnInit {
   ];
 
   getAllUserBalance(){
-    this.dashboardService.getBalance(111, 1, '').subscribe( (data) => {
+    this.dashboardService.getBalance(USER_DATA.accountNumber, USER_DATA.userId, '').subscribe( (data) => {
       console.log(data)
       this.secondaryUsers = data.secondaryaccounts
       
@@ -111,14 +113,14 @@ export class ActivityDashboardComponent implements OnInit {
   }
 
   getRecentTransactions(){
-    this.dashboardService.getRecentTransactions(111).subscribe((data) => {
+    this.dashboardService.getRecentTransactions(USER_DATA.accountNumber).subscribe((data) => {
       console.log(data)
       this.recentTransactions = data
     })
   }
   
   getYearlyTransactions(){
-    this.dashboardService.getYearlyTransactions(111, null).subscribe((data) => {
+    this.dashboardService.getYearlyTransactions(USER_DATA.accountNumber, null).subscribe((data) => {
       console.log(data)
       for(let ind=0; ind<12; ind+=1){
         let key: any = this.barChartLabels[ind]
@@ -132,31 +134,4 @@ export class ActivityDashboardComponent implements OnInit {
       this.spinner.hide();
     })
   }
-
-
-//   data: {
-//     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//     datasets: [{
-//         label: '# of Votes',
-//         data: [12, 19, 3, 5, 2, 3],
-//         backgroundColor: [
-//             'rgba(255, 99, 132, 0.2)',
-//             'rgba(54, 162, 235, 0.2)',
-//             'rgba(255, 206, 86, 0.2)',
-//             'rgba(75, 192, 192, 0.2)',
-//             'rgba(153, 102, 255, 0.2)',
-//             'rgba(255, 159, 64, 0.2)'
-//         ],
-//         borderColor: [
-//             'rgba(255, 99, 132, 1)',
-//             'rgba(54, 162, 235, 1)',
-//             'rgba(255, 206, 86, 1)',
-//             'rgba(75, 192, 192, 1)',
-//             'rgba(153, 102, 255, 1)',
-//             'rgba(255, 159, 64, 1)'
-//         ],
-//         borderWidth: 1
-//     }]
-// },
-
 }

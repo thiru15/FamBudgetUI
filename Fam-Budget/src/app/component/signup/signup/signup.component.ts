@@ -23,30 +23,21 @@ export class SignupComponent implements OnInit {
       firstname: ['',[Validators.required]],
       lastname: ['',[Validators.required]],
       gender: ['Male',[Validators.required]],
-      mobile: ['',[Validators.required]],
-      email: ['',[Validators.required]],
+      mobile: ['',[Validators.required, Validators.pattern('[0-9 ]{10}')]],
+      email: ['',[Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       pannumber: ['',[Validators.required]],
       age: ['',[Validators.required]],
-      file: ['' ]
-
-      // firstname: [''],
-      // lastname: [''],
-      // gender: ['Male'],
-      // mobile: [''],
-      // email: [''],
-      // relationship: [''],
-      // pannumber: [''],
-      // age: [''],
-      // file: [[]]
+      file: ['']
     })
   }
   submitForm(){
-    console.log(this.myForm.value);
-    
-   this.authService.signup(this.myForm).subscribe( (data) => {
-     console.log('response for signup ', data)
-     this.router.navigate(['./'])
+    if(this.myForm.value.file){
+        this.authService.signup(this.myForm).subscribe( (data) => {
+                  console.log('response for signup ', data)
+                 this.router.navigate(['./'])
    })
+    }
+ 
   }
 
   onFileSelect($event: any){
@@ -54,7 +45,7 @@ export class SignupComponent implements OnInit {
             	    if ($event.target.files && $event.target.files.length) {
             	      const files : any[] =  $event.target.files;
                     this.file = []
-                  // console.log(files)
+                  console.log(files)
 
                   for(let ind=0; ind<files.length; ind+=1){
                     const reader = new FileReader();
@@ -69,9 +60,7 @@ export class SignupComponent implements OnInit {
                     file : this.file,
                    });
                   //  console.log(this.myForm.value.file)
-                  //  console.log(this.myForm. errors)
                   this.cd.markForCheck();
-                  // console.log(reader.result)
             }
   }
 }

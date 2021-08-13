@@ -48,7 +48,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   confirmCodeSubmit(){
     console.log(this.form.value.username)
-    this.authService.confirmPassword('6', this.codeConfirmForm.value.code, this.codeConfirmForm.value.newPassword)
+    this.authService.confirmPassword(this.form.value.username, this.codeConfirmForm.value.code, this.codeConfirmForm.value.newPassword)
     .pipe(first()).subscribe( (data) => {
       console.log(data)
       if(data=="SUCCESS"){

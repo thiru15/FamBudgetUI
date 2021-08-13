@@ -1,5 +1,6 @@
 export const API_URL = {
     BASE_URL: 'https://ll2ia2fwd0.execute-api.us-east-1.amazonaws.com/dev/',
+    // BASE_URL: 'http://localhost:3000/dev/',
     SIGNUP: 'auth/signup',
     LOGIN: 'auth/login',
     

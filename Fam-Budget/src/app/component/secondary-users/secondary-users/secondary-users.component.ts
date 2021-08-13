@@ -6,6 +6,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { PolicyComponent } from '../../policy/policy.component';
 import { first } from 'rxjs/operators';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { USER_DATA } from 'src/app/util/auth.util';
 
 
 export interface DialogData {
@@ -67,7 +68,7 @@ activate(secondaryId: number, isActive: boolean ) {
 // }
   
 getSecondarUsers(){
-  this.dashboardService.getSecondaryUsers(111).subscribe( (data) => {
+  this.dashboardService.getSecondaryUsers(USER_DATA.accountNumber).subscribe( (data) => {
     this.secondaryUsers = data
     console.log(this.secondaryUsers)
     for(let ind=0; ind<this.secondaryUsers.length; ind+=1){
@@ -79,7 +80,7 @@ getSecondarUsers(){
 }
 
 getPolicy(){
-  return this.dashboardService.getPolicies(111, 1).subscribe( (data) => {
+  return this.dashboardService.getPolicies(USER_DATA.accountNumber, USER_DATA.userId).subscribe( (data) => {
       // console.log(data)
       this.policies = data
       this.gotPolicies = true

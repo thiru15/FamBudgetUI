@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { first } from 'rxjs/operators';
 import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { USER_DATA } from 'src/app/util/auth.util';
 @Component({
   selector: 'app-transfer-money',
   templateUrl: './transfer-money.component.html',
@@ -41,13 +42,13 @@ export class TransferMoneyComponent implements OnInit {
   }
   sendMoney(amount:any){
     console.log("Amount ",amount)
-    return this.DashboardService.sendMoney(111,this.selected,amount).pipe(first()).subscribe( (data) => {
+    return this.DashboardService.sendMoney(USER_DATA.accountNumber,this.selected,amount).pipe(first()).subscribe( (data) => {
       this.secondaryUsers = data
     })
   }
   getFamily(){
 
-    return this.DashboardService.getSecondaryUsers(111).pipe(first()).subscribe( (data) => {
+    return this.DashboardService.getSecondaryUsers(USER_DATA.accountNumber).pipe(first()).subscribe( (data) => {
       console.log("data ",data);
       //window.open(data);'
       this.secondaryUsers = data

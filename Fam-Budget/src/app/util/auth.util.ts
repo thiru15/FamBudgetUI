@@ -17,7 +17,8 @@ export let USER_DATA = {
     email:  '',
     name:  '',
     accountNumber: '',
-    userId: ''
+    userId: '',
+    role: ''
 }
 export function setUser(data: { idToken: string; accessToken: string; accountNumber: any }) {
     localStorage.setItem(LOCAL_STORAGE.IDENTITY_TOKEN, data.idToken);
@@ -34,6 +35,7 @@ export function setUser(data: { idToken: string; accessToken: string; accountNum
     }
 
     getUserDetails()
+    console.log("SET USER DATA", USER_DATA)
     return 
 }
 
@@ -54,6 +56,7 @@ export function getUserDetails(): void {
     USER_DATA.email = userData.email || ''
     USER_DATA.name = userData.name || ''
     USER_DATA.userId = userData["cognito:username"]
+    USER_DATA.role = localStorage.getItem(LOCAL_STORAGE.ROLE)!
 }
 
 export function isPrimaryUser() {

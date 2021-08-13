@@ -42,11 +42,11 @@ export class DashboardService {
       { headers: this.headerOptions }
     );
   }
-  sendMoney(accountNumber: any,secondaryId: number, amount: number): Observable<any> {
+  sendMoney(accountNumber: any, secondaryId: number, amount: number): Observable<any> {
     //  const parameters = new HttpParams().set('accountNumber', accountNumber)
     const url = API_URL.BASE_URL + API_URL.SEND_MONEY
     return this.http.post(url,
-      { 'accountNumber': accountNumber, 'amount':amount,'secondaryId':secondaryId },
+      { 'accountNumber': accountNumber, 'amount': amount, 'secondaryId': secondaryId },
       { headers: this.headerOptions }
     );
   }
@@ -63,17 +63,19 @@ export class DashboardService {
   createCard(customerId: any, accountNumber: any, senderSecondary: any): Observable<any> {
     const url = API_URL.BASE_URL + API_URL.CREATE_CARD
     return this.http.post(url,
-      { 'customerId': customerId,
+      {
+        'customerId': customerId,
         'accountNumber': accountNumber,
-         'senderSecondary': senderSecondary
+        'senderSecondary': senderSecondary
       },
       { headers: this.headerOptions }
     );
   }
 
-  createSecondaryUser(accountNumber: any, form: FormGroup ): Observable<any> {
+  createSecondaryUser(accountNumber: any, form: FormGroup): Observable<any> {
     const url = API_URL.BASE_URL + API_URL.SECONDARY_SIGNUP
-    const obj = {accountNumber: accountNumber,
+    const obj = {
+      accountNumber: accountNumber,
       firstName: form.value.firstname,
       lastName: form.value.lastname,
       email: form.value.email,
@@ -83,12 +85,13 @@ export class DashboardService {
       isKycVerified: form.value.isKycVerified,
       bcity: form.value.bcity || '',
       panNumber: form.value.pannumber,
-      isMinor : form.value.isMinor,
-      fundsAllocated: form.value.fundsAllocated
+      isMinor: form.value.isMinor,
+      fundsAllocated: form.value.fundsAllocated,
     }
-    console.log("Object ",obj);
+    console.log("Object ", obj);
     return this.http.post(url,
-      {accountNumber: accountNumber,
+      {
+        accountNumber: accountNumber,
         firstName: form.value.firstname,
         lastName: form.value.lastname,
         email: form.value.email,
@@ -98,10 +101,10 @@ export class DashboardService {
         isKycVerified: form.value.isKycVerified,
         bcity: form.value.bcity || 'chennai',
         panNumber: form.value.pannumber,
-        isMinor : form.value.isMinor,
+        isMinor: form.value.isMinor,
         fundsAllocated: form.value.fundsAllocated
       },
-      { headers: this.headerOptions}
+      { headers: this.headerOptions }
     );
   }
 
@@ -109,7 +112,7 @@ export class DashboardService {
     const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId).set('secondaryId', secondaryId)
     const url = API_URL.BASE_URL + API_URL.GET_BALANCE
     return this.http.get(url,
-      { headers: this.headerOptions, params: parameters}
+      { headers: this.headerOptions, params: parameters }
     );
   }
 
@@ -117,26 +120,27 @@ export class DashboardService {
     const parameters = new HttpParams().set('id', accountNumber)
     const url = API_URL.BASE_URL + API_URL.GET_RECENT_TRANSACTION
     return this.http.get(url,
-      { headers: this.headerOptions, params: parameters}
+      { headers: this.headerOptions, params: parameters }
     );
   }
 
   getYearlyTransactions(accountNumber: string | number | boolean, secondaryId: any): Observable<any> {
     const parameters = new HttpParams().set('accountNumber', accountNumber)
-    if(secondaryId) { parameters.set('secondaryId' , secondaryId ) }
+    if (secondaryId) { parameters.set('secondaryId', secondaryId) }
     const url = API_URL.BASE_URL + API_URL.GET_MONTHLY_REPORTS
     return this.http.get(url,
-      { headers: this.headerOptions, params: parameters}
+      { headers: this.headerOptions, params: parameters }
     );
   }
 
-  createPolicy(customerId: any, accountNumber: any, isSecondaryHolder: any, secondaryId: any, expirationDate: any,  spendLimit: any): Observable<any> {
+  createPolicy(customerId: any, accountNumber: any, isSecondaryHolder: any, secondaryId: any, expirationDate: any, spendLimit: any): Observable<any> {
     const url = API_URL.BASE_URL + API_URL.CREATE_POLICY
     return this.http.post(url,
-      { 'customerId': customerId,
+      {
+        'customerId': customerId,
         'accountNumber': accountNumber,
         'isSecondaryHolder': isSecondaryHolder,
-        'expirationDate' : expirationDate,
+        'expirationDate': expirationDate,
         'spendLimit': spendLimit,
         'secondaryId': secondaryId
       },
@@ -145,30 +149,32 @@ export class DashboardService {
   }
 
   getPolicies(accountNumber: any, customerId: any): Observable<any> {
-    const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId )
+    const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId)
     const url = API_URL.BASE_URL + API_URL.GET_POLICY
     return this.http.get(url,
-      { headers: this.headerOptions, params: parameters}
+      { headers: this.headerOptions, params: parameters }
     );
   }
 
-  updatePolicy(accountNumber: any,  policyId: any, customerId: any, expirationDate: any, spendLimit: any): Observable<any> {
+  updatePolicy(accountNumber: any, policyId: any, customerId: any, expirationDate: any, spendLimit: any): Observable<any> {
     const url = API_URL.BASE_URL + API_URL.UPDATE_POLICY
     return this.http.put(url,
-      {   'policyId': policyId,'accountNumber':  accountNumber, 'customerId': customerId,
-      'expirationDate' : expirationDate,
-      'spendLimit': spendLimit },
-      { headers: this.headerOptions}
+      {
+        'policyId': policyId, 'accountNumber': accountNumber, 'customerId': customerId,
+        'expirationDate': expirationDate,
+        'spendLimit': spendLimit
+      },
+      { headers: this.headerOptions }
     );
   }
 
 
- downloadTransactions(accountNumber: any, customerId: any,secondaryId: any): Observable<any> {
-  const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId).set('secondaryId', secondaryId)
+  downloadTransactions(accountNumber: any, customerId: any, secondaryId: any): Observable<any> {
+    const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId).set('secondaryId', secondaryId)
 
-  const url = API_URL.BASE_URL + API_URL.GET_DOWNLOADS
-  return this.http.get(url,
-    {headers: this.headerOptions, params: parameters}
+    const url = API_URL.BASE_URL + API_URL.GET_DOWNLOADS
+    return this.http.get(url,
+      { headers: this.headerOptions, params: parameters }
     );
 
  }
@@ -187,18 +193,36 @@ export class DashboardService {
 
  }
 
- deleteSecondaryUser(secondaryId: any, isActive: boolean): Observable<any> {
-  const url = API_URL.BASE_URL + API_URL.DELETE_SECONDARY_USER
-  return this.http.delete(url,
-    { headers: this.headerOptions,
-      body: { "secondaryId": secondaryId, "isActive": isActive}
-   },
-  );
-}
- 
 
+  deleteSecondaryUser(secondaryId: any, isActive: boolean): Observable<any> {
+    const url = API_URL.BASE_URL + API_URL.DELETE_SECONDARY_USER
+    return this.http.delete(url,
+      {
+        headers: this.headerOptions,
+        body: { "secondaryId": secondaryId, "isActive": isActive }
+      },
+    );
+  }
+  /// http://localhost:3000/dev/accountHolder/get?customerId=10000007
 
+  getPrimaryUserDetails(accountNumber: any, customerId: any) {
+    const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', customerId)
+    const url = API_URL.BASE_URL + API_URL.GET_PRIMARY_ACCOUNT_HOLDER
+    return this.http.get(url,
+      {
+        headers: this.headerOptions, params: parameters
+      },
+    );
+  }
 
-  
+  getKycUrls(customerId: any){
+    const parameters = new HttpParams().set('customerId', customerId)
+    const url = API_URL.BASE_URL + API_URL.GET_KYC_URLS
+    return this.http.get(url,
+      {
+        headers: this.headerOptions, params: parameters
+      },
+    );
+  }
 
 }

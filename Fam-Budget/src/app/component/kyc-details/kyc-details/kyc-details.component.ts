@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { getUserDetails } from 'src/app/util/auth.util';
+import { first } from 'rxjs/operators';
+import { DashboardService } from 'src/app/service/dashboard/dashboard.service';
+import { getUserDetails, USER_DATA } from 'src/app/util/auth.util';
 
 @Component({
   selector: 'app-kyc-details',
@@ -8,11 +10,31 @@ import { getUserDetails } from 'src/app/util/auth.util';
 })
 export class KycDetailsComponent implements OnInit {
 
-  constructor() { 
-    const userDetails = getUserDetails()
+  constructor(private dashboardService: DashboardService) { 
+    getUserDetails()
+    this.getKycInfo()
   }
+  kyc: any
 
   ngOnInit(): void {
   }
 
+  getKycInfo(){
+    this.dashboardService.getKycUrls(USER_DATA.userId).pipe(first()).subscribe( (data) => {
+        console.log(data)
+        this.kyc = data
+  })
 }
+// image/*,.pdf,.doc,.docx JPG
+  isImageUrl(key: string){
+    const imageTypes= ["jpg","gif", "jpeg","png" ]
+    const ext = key.split('.').pop() || ''
+    console.log(ext)
+    if(imageTypes.includes(ext)){
+        return true
+    }
+    return false
+  }
+}
+
+

@@ -54,7 +54,7 @@
     </div>
   </div>
   <div>
-    <h3>Transactions</h3>
+    <h3>Recent Transactions</h3>
     <div class="container" *ngFor="let trans of recentTransactions">
       <div class="transaction">
         <h4>{{trans.transactionStartedAt | date:'medium' }}</h4>
@@ -63,8 +63,8 @@
           <br/>
           <small>Successfully</small>
         </div>
-        <b *ngIf="trans.senderAccountNumber==111" style="color: #E84398;">-₹{{trans.amount}}</b>
-        <b *ngIf="trans.senderAccountNumber!=111" style="color: darkseagreen;">+₹{{trans.amount}}</b>
+        <b *ngIf="trans.senderAccountNumber==111" style="color: #E84398;">₹{{trans.amount}}</b>
+        <b *ngIf="trans.senderAccountNumber!=111" style="color: darkseagreen;">₹{{trans.amount}}</b>
       </div>
     </div>
     

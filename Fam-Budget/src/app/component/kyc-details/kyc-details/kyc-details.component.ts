@@ -21,7 +21,6 @@ export class KycDetailsComponent implements OnInit {
 
   getKycInfo(){
     this.dashboardService.getKycUrls(USER_DATA.userId).pipe(first()).subscribe( (data) => {
-        console.log(data)
         this.kyc = data
   })
 }
@@ -29,7 +28,6 @@ export class KycDetailsComponent implements OnInit {
   isImageUrl(key: string){
     const imageTypes= ["jpg","gif", "jpeg","png" ]
     const ext = key.split('.').pop() || ''
-    console.log(ext)
     if(imageTypes.includes(ext)){
         return true
     }

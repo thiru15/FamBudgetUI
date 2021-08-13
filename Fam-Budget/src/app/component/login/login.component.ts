@@ -33,11 +33,9 @@ export class LoginComponent implements OnInit {
 
   }
   navContentChange(content: string){
-    console.log(content)
     this.loadComponent = content
   }
   submit(){
-    console.log(this.form.value)
     this.authService.login(this.form.value.username, this.form.value.password).pipe(first()).subscribe( (data) => {
       if(data.success == true){
         setUser(data)
@@ -55,10 +53,8 @@ export class LoginComponent implements OnInit {
   }
 
   resetPassSubmit(){
-    console.log(this.resetPassForm.value)
     const formValue = this.resetPassForm.value
     this.authService.resetTemporaryPassword(formValue.username, formValue.newPassword, formValue.temporaryPassword).pipe(first()).subscribe( (data) => {
-      console.log(data)
       if(data=="SUCCESS"){
         this.reset=false
         this.toastr.success("Password reset success", "Success!")

@@ -23,7 +23,6 @@ export class MyProfileComponent implements OnInit {
     this.userData = USER_DATA
     console.log('hello user', USER_DATA.accountNumber, USER_DATA.userId)
     this.dashboardService.getPrimaryUserDetails(USER_DATA.accountNumber, USER_DATA.userId).pipe(first()).subscribe( (data) => {
-        console.log(data)
         this.user = data
   })
 }

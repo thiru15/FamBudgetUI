@@ -7,10 +7,10 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private spinner: NgxSpinnerService,) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.spinner.show();
+
   }
   
 

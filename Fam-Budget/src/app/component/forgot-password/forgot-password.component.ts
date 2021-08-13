@@ -33,11 +33,9 @@ export class ForgotPasswordComponent implements OnInit {
     this.code = false
   }
   forgotPassSubmit(){
-    console.log(this.form.value)
-
+    
     this.username = this.form.value.username
     this.authService.forgotPassword(this.form.value.username).pipe(first()).subscribe( (data) => {
-      console.log(data)
       if(data=="SUCCESS"){
         this.code = true;
       }else{
@@ -47,10 +45,8 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   confirmCodeSubmit(){
-    console.log(this.form.value.username)
     this.authService.confirmPassword(this.form.value.username, this.codeConfirmForm.value.code, this.codeConfirmForm.value.newPassword)
     .pipe(first()).subscribe( (data) => {
-      console.log(data)
       if(data=="SUCCESS"){
         //show toaster
       }else{

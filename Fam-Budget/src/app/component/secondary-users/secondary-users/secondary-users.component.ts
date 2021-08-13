@@ -59,7 +59,7 @@ flip: string = 'inactive';
 
 activate(secondaryId: number, isActive: boolean ) {
   this.dashboardService.deleteSecondaryUser(secondaryId, isActive).subscribe( (data) => {
-    console.log(data)
+  
   })
 }
 // chooseAvatarColor(name: string){
@@ -70,7 +70,6 @@ activate(secondaryId: number, isActive: boolean ) {
 getSecondarUsers(){
   this.dashboardService.getSecondaryUsers(USER_DATA.accountNumber).subscribe( (data) => {
     this.secondaryUsers = data
-    console.log(this.secondaryUsers)
     for(let ind=0; ind<this.secondaryUsers.length; ind+=1){
         this.secondaryUsers[ind]["avatarColor"] = this.avatarColors[ind%7]
         console.log(this.secondaryUsers[ind]["avatarColor"])
@@ -85,7 +84,6 @@ getPolicy(){
       this.policies = data
       this.gotPolicies = true
       this.cdref.markForCheck();
-      console.log("policies ", this.policies)
   })
 }
 

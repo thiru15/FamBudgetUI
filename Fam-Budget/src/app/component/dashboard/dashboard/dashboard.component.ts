@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ChangeDetectorRef } from '@angular/core';
+import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,7 +8,7 @@ import {ChangeDetectorRef } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private cdref: ChangeDetectorRef) { }
+  constructor(private cdref: ChangeDetectorRef, private spinner: NgxSpinnerService) { }
   ngOnInit(): void {
   }
   activeLink: string = 'home';

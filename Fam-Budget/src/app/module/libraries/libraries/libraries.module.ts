@@ -24,7 +24,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChartsModule } from 'ng2-charts';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [],
   imports: [
@@ -53,7 +53,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatGridListModule,
     MatDialogModule,
     ChartsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxSpinnerModule,
   ],
   exports: [
     MatToolbarModule,
@@ -78,7 +79,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatGridListModule,
     MatDialogModule,
     ChartsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxSpinnerModule
   ]
 })
 export class LibrariesModule { }

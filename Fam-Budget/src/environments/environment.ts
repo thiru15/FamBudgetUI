@@ -6,7 +6,10 @@ export const environment = {
   production: false,
   userPool: "",
   client: 'us-east-1_FoYGRgTyX',
-  appClientId: '3egu3j5t1dck447tl9n0d812cf'
+  appClientId: '3egu3j5t1dck447tl9n0d812cf',
+  
+  primaryUserGroup: "primary-account-holder",
+  secondaryUserGroup: "seondary-account-holder"
 };
 
 /*

@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { first } from 'rxjs/operators';
 import { AuthService } from 'src/app/service/auth/auth/auth.service';
 import {Router} from '@angular/router';
+import { setUser } from 'src/app/util/auth.util';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   reset = false
   resetPassForm: FormGroup
   loadComponent = 'cards'
-  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router) {
+  constructor(private authService: AuthService, private fb: FormBuilder, private router: Router, private toastr: ToastrService) {
     this.form = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -39,15 +41,18 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.form.value.username, this.form.value.password).pipe(first()).subscribe( (data) => {
       console.log(data)
       if(data.accessToken){
+        setUser(data)
+        this.toastr.success('you have successfully logged in', "Success!")
         this.router.navigate(['/dashboard'])
       }
       else if(data == "PASSWORD_RESET_REQUIRED"){
         this.reset=true
+        this.toastr.warning("Reset password required", "Warning!")
       }
-      // else{
-      //   // show toaster
-      // }
-    })
+    }, (error) => {
+        console.log("error in login", error)
+        this.toastr.error("Incorrect Username or Password","Error!" )
+      })
   }
 
   resetPassSubmit(){
@@ -57,11 +62,15 @@ export class LoginComponent implements OnInit {
       console.log(data)
       if(data=="SUCCESS"){
         this.reset=false
+        this.toastr.success("Password reset success", "Success!")
         this.router.navigate(['./'])
       }
       // else{
       //   // show toaster
       // }
+    }, (error) => {
+      console.log("error in login", error)
+      this.toastr.error("Couldn't reset temporary password","Error!" )
     })
   }
 

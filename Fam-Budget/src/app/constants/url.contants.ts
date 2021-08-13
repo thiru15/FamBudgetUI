@@ -12,6 +12,7 @@ export const API_URL = {
     GET_RECENT_TRANSACTION: 'reports/getRecentTransactions',
     GET_POLICY: 'policy/get',
     GET_DOWNLOADS: 'transaction/download',
+    GET_KYC_URLS: '/accountHolder/getKycUrl',
 
     CREATE_TRANSACTION: 'transaction/createTransaction',
     PRIMARY_SIGNUP: 'auth/signup',
@@ -26,7 +27,10 @@ export const API_URL = {
     UPDATE_POLICY: 'policy/update',
     UPDATE_KYC_PRIMARY: 'accountHolder/updateKyc',
     SEND_MONEY: 'secondaryaccount/add/funds',
-    DELETE_SECONDARY_USER: 'secondaryaccount/delete'
+    DELETE_SECONDARY_USER: 'secondaryaccount/delete',
+
+    GET_ACCOUNT_INFO: '/account/get',
+    GET_PRIMARY_ACCOUNT_HOLDER: 'accountHolder/get'
 
 }
 

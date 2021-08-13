@@ -47,7 +47,7 @@ export class AuthService {
         panNumber: formDetails.value.pannumber,
         age: formDetails.value.age,
         files: formDetails.value.file,
-        role: 'primary-account-holder'
+        role: 'primary-account-holder',
     },
       {headers: this.headerOptions}
     );

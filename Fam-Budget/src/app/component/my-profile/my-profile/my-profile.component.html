@@ -1,10 +1,9 @@
 <!-- <app-profile></app-profile> -->
 <div class="profile-main-div">
-<mat-card class="profile-card">
-
+<mat-card class="profile-card"> 
     <mat-card-header>
-      <mat-card-title>Ted Mosby</mat-card-title>
-      <mat-card-subtitle>primary account holder</mat-card-subtitle>
+      <mat-card-title>{{user.firstName}} {{user.lastName}}</mat-card-title>
+      <mat-card-subtitle>{{userData.role}}</mat-card-subtitle>
       <ngx-avatar name="Ted Mosby" bgColor="#0F2027" size=60></ngx-avatar>
     </mat-card-header>
 
@@ -18,29 +17,29 @@
     <mat-card-content>
       <div class="profile-div">
         <mat-icon class="profile-icon" style="color: black;">phone</mat-icon> 
-        <span>+91 9840389581</span>
+        <span>{{user.mobile}}</span>
       </div>
       <div class="profile-div">
         <mat-icon class="profile-icon" style="color: black;">email</mat-icon> 
-        <span>sangeetha@gmail.com</span>
+        <span>{{user.email}}</span>
       </div>
       <div class="profile-div">
         <mat-icon class="profile-icon" style="color: black;">perm_identity</mat-icon> 
-        <span>female</span>
+        <span>{{user.gender}}</span>
       </div>
       <div class="profile-div">
         <mat-icon class="profile-icon" style="color: black;">location_on</mat-icon> 
-        <span>Chennai</span>
+        <span>{{user.bcity}}</span>
       </div>
       <div class="profile-div">
         <mat-icon class="profile-icon" style="color: black;">badge</mat-icon> 
-        <span>B04892389898</span>
+        <span>{{user.panNumber}}</span>
       </div>
 
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-button>Edit</button>
+      <button mat-button disabled>Edit</button>
     </mat-card-actions>
   </mat-card>
 </div>

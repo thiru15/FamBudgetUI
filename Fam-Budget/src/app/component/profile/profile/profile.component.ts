@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private spinner: NgxSpinnerService,) { }
 
   ngOnInit(): void {
+    this.spinner.show();
   }
+  
 
 }

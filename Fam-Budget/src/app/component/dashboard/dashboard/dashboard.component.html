@@ -18,12 +18,12 @@
     <mat-tab label="Transactions">
         <app-transactions *ngIf="tabGroup.selectedIndex === 1"></app-transactions>
     </mat-tab>
-    <mat-tab label="Secondary Users">
+    <mat-tab label="Family Members">
         <app-secondary-users *ngIf="tabGroup.selectedIndex === 2"></app-secondary-users>
     </mat-tab>
-    <mat-tab label="Reports">
+    <!-- <mat-tab label="Reports">
         <app-reports *ngIf="tabGroup.selectedIndex === 3"></app-reports>
-    </mat-tab>
+    </mat-tab> -->
     <mat-tab disabled class="profile-menu">
         <ng-template mat-tab-label>
             <button mat-icon-button [matMenuTriggerFor]="profileMenu">

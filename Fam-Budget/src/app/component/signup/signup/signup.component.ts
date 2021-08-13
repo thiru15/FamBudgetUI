@@ -42,6 +42,7 @@ export class SignupComponent implements OnInit {
   }
   submitForm(){
     console.log(this.myForm.value);
+    
    this.authService.signup(this.myForm).subscribe( (data) => {
      console.log('response for signup ', data)
      this.router.navigate(['./'])

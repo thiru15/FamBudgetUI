@@ -173,6 +173,19 @@ export class DashboardService {
 
  }
  
+ setPin(accountNumber: any, pin: any,cardNumber: any): Observable<any> {
+  //const parameters = new HttpParams().set('accountNumber', accountNumber).set('customerId', cardNumber).set('pin', pin)
+
+  const url = API_URL.BASE_URL + API_URL.SET_PIN
+  return this.http.post(url,
+    { 'cardNumber': cardNumber,
+        'accountNumber': accountNumber,
+        'pin': pin
+      },
+    {headers: this.headerOptions}
+    );
+
+ }
 
  deleteSecondaryUser(secondaryId: any, isActive: boolean): Observable<any> {
   const url = API_URL.BASE_URL + API_URL.DELETE_SECONDARY_USER

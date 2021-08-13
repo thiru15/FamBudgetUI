@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from 'src/app/component/reset-password/reset-p
 import { KycDetailsComponent } from 'src/app/component/kyc-details/kyc-details/kyc-details.component';
 import { LibrariesModule } from '../../libraries/libraries/libraries.module';
 import { RouterModule } from '@angular/router';
+import { NgxSpinnerModule } from 'ngx-spinner';
 // import { RouterModule} from '@angular/router';
 
 @NgModule({
@@ -22,11 +23,13 @@ import { RouterModule } from '@angular/router';
     ProfileRoutingModule,
     LibrariesModule,
     FlexLayoutModule,
-    RouterModule
+    RouterModule,
+    NgxSpinnerModule
   ],
   exports:[
     RouterModule,
-    LibrariesModule
+    LibrariesModule,
+    NgxSpinnerModule
   ]
 })
 export class ProfileModule { }
